@@ -30,23 +30,28 @@ After the cordova exportation and the creation of the project, one of the follow
 
 #### Admob 
 
-* Android 
-```cordova plugin add com.ludei.ads.android.admob;
+* Android: 
+```
+	cordova plugin add com.ludei.ads.android.admob;
 ```
 * iOS:
-```cordova plugin add com.ludei.ads.ios.admob; 
+```
+	cordova plugin add com.ludei.ads.ios.admob; 
 ```
 #### Mopub
-* Android  
-```cordova plugin add com.ludei.ads.android.mopub;
+* Android:  
+```
+	cordova plugin add com.ludei.ads.android.mopub;
 ```
 * iOS: 
-```cordova plugin add com.ludei.ads.ios.mopub;
+```
+	cordova plugin add com.ludei.ads.ios.mopub;
 ```
 In addition, there are optional MoPub adapters for iOS and Android.
 
 * Android: 
-``` cordova plugin add con.ludei.ads.android.adcolony;
+```
+	cordova plugin add con.ludei.ads.android.adcolony;
 	cordova plugin add con.ludei.ads.android.admob;
 	cordova plugin add con.ludei.ads.android.charboost;
 	cordova plugin add con.ludei.ads.android.greystripe;
@@ -54,7 +59,8 @@ In addition, there are optional MoPub adapters for iOS and Android.
 	cordova plugin add con.ludei.ads.android.millennial;
 ```
 * iOS: 
-``` cordova plugin add com.ludei.ads.ios.mopub.charboost;
+```
+	cordova plugin add com.ludei.ads.ios.mopub.charboost;
 	cordova plugin add com.ludei.ads.ios.mopub.admob;
 	cordova plugin add com.ludei.ads.ios.mopub.millennial;
 ```
@@ -63,7 +69,8 @@ In addition, there are optional MoPub adapters for iOS and Android.
 * You can use this plugins in the Webview+ for cordova (ios and android), but not yet at the cloud or in Canvas+. 
 * If you can't see ads after exportation, please, check the order of the scripts in the project index. 
 They should be in this order: 
-``` <!-- Construct 2 exported games require jQuery. -->
+```
+	<!-- Construct 2 exported games require jQuery. -->
 	<script src="jquery-2.1.1.min.js"></script>
 
 	<script src="cordova.js"></script>
@@ -71,8 +78,9 @@ They should be in this order:
 	<script src="cocoon.js"></script>
 	<script src="cocoon_xxx.js"></script>
 ```
-	Instead of in this one: 
-``` <!-- Construct 2 exported games require jQuery. -->
+Instead of in this one: 
+```
+	<!-- Construct 2 exported games require jQuery. -->
 	<script src="jquery-2.1.1.min.js"></script>
 
 	<script src="cocoon.js"></script>
