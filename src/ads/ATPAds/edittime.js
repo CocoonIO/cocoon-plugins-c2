@@ -1,9 +1,9 @@
 function GetPluginSettings() {
     return {
-        "name": "Atomic Plugins for Ads",
+        "name": "ATP Ads",
         "id": "ATPAds",
         "version": "1.0",
-        "description": "Access to Atomic Plugins for Ads",
+        "description": "Atomic Plugins for Ads",
         "author": "Ludei",
         "help url": "http://www.ludei.com",
         "category": "Platform specific",
