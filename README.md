@@ -30,46 +30,47 @@ After the cordova exportation and the creation of the project, one of the follow
 
 #### Admob 
 
-* Android: 
+* Android
 ```
 	cordova plugin add com.ludei.ads.android.admob;
 ```
-* iOS:
-```
+* iOS
+	
 	cordova plugin add com.ludei.ads.ios.admob; 
-```
+	
 #### Mopub
-* Android:  
-```
+* Android
+	
 	cordova plugin add com.ludei.ads.android.mopub;
-```
-* iOS: 
-```
+	
+* iOS
+	
 	cordova plugin add com.ludei.ads.ios.mopub;
-```
+	
 In addition, there are optional MoPub adapters for iOS and Android.
 
-* Android: 
-```
+* Android
+	
 	cordova plugin add con.ludei.ads.android.adcolony;
 	cordova plugin add con.ludei.ads.android.admob;
 	cordova plugin add con.ludei.ads.android.charboost;
 	cordova plugin add con.ludei.ads.android.greystripe;
 	cordova plugin add con.ludei.ads.android.inmobi;
 	cordova plugin add con.ludei.ads.android.millennial;
-```
-* iOS: 
-```
+	
+* iOS 
+	
 	cordova plugin add com.ludei.ads.ios.mopub.charboost;
 	cordova plugin add com.ludei.ads.ios.mopub.admob;
 	cordova plugin add com.ludei.ads.ios.mopub.millennial;
-```
+	
 ## Important information to take into account 
 
-* You can use this plugins in the Webview+ for cordova (ios and android), but not yet at the cloud or in Canvas+. 
-* If you can't see ads after exportation, please, check the order of the scripts in the project index. 
+You can use this plugins in the Webview+ for cordova (ios and android), but not yet at the cloud or in Canvas+. 
+
+If you can't see ads after exportation, please, check the order of the scripts in the project index. 
 They should be in this order: 
-```
+	
 	<!-- Construct 2 exported games require jQuery. -->
 	<script src="jquery-2.1.1.min.js"></script>
 
@@ -77,9 +78,9 @@ They should be in this order:
 
 	<script src="cocoon.js"></script>
 	<script src="cocoon_xxx.js"></script>
-```
+	
 Instead of in this one: 
-```
+	
 	<!-- Construct 2 exported games require jQuery. -->
 	<script src="jquery-2.1.1.min.js"></script>
 
@@ -87,7 +88,7 @@ Instead of in this one:
 	<script src="cocoon_xxx.js"></script>
 
 	<script src="cordova.js"></script>
-```
+
 As this one is the default C2 exportation, it must be edited by hand until we find a better workaround.
 
 ## Need help?
