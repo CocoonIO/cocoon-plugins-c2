@@ -68,29 +68,6 @@ In addition, there are optional MoPub adapters for iOS and Android.
 
 You can use this plugins in the Webview+ for cordova (ios and android), but not yet at the cloud or in Canvas+. 
 
-If you can't see ads after exportation, please, check the order of the scripts in the project index. 
-* They should be in this order: 
-```html
-	<!-- Construct 2 exported games require jQuery. -->
-	<script src="jquery-2.1.1.min.js"></script>
-
-	<script src="cordova.js"></script>
-
-	<script src="cocoon.js"></script>
-	<script src="cocoon_xxx.js"></script>
-```
-* Instead of in this one: 
-```html
-	<!-- Construct 2 exported games require jQuery. -->
-	<script src="jquery-2.1.1.min.js"></script>
-
-	<script src="cocoon.js"></script>
-	<script src="cocoon_xxx.js"></script>
-
-	<script src="cordova.js"></script>
-```
-As this one is the default C2 exportation, it must be edited by hand until we find a better workaround.
-
 ## Need help?
 
 Visit [our help center](https://support.ludei.com).
