@@ -183,16 +183,18 @@ cr.plugins_.ATPAds = function(runtime) {
 
         // banner actions
         Acts.prototype.ShowBanner = function() {
-            if(bannerReady)
+            if(bannerReady) {
                 showBanner = true;
                 self.banner.show();
+            }    
             else 
                 self.banner.load();
         };
         Acts.prototype.HideBanner = function() {
-            if(self.isShowingBanner)
+            if(self.isShowingBanner){
                 showBanner = false;
                 self.banner.hide();
+            }    
         };        
         Acts.prototype.LoadBanner = function() {
             if(!bannerReady)
