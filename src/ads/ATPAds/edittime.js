@@ -72,10 +72,10 @@ AddAction(8, 0, "Load banner", "Banners", "Load a banner ad", "Start loading a b
 // Interstitials
 
 // Show
-AddAction(12, 0, "Show interstitial", "Interstitials", "Show the banner ad", "Show a banner ad on the screen while the game is running.", "ShowInterstitial");
+AddAction(12, 0, "Show interstitial", "Interstitials", "Show the interstitial", "Show an interstitial on the screen while the game is running.", "ShowInterstitial");
 
 //Load 
-AddAction(13, 0, "Load interstitial", "Interstitials", "Load a banner ad", "Start loading an interstitial in the background.", "LoadInterstitial");
+AddAction(13, 0, "Load interstitial", "Interstitials", "Load an interstitial", "Start loading an interstitial in the background.", "LoadInterstitial");
 
 ACESDone();
 
