@@ -40,7 +40,7 @@ AddCondition(8, cf_trigger, "On interstitial loaded", "Interstitials", "On inter
 
 AddCondition(9, cf_trigger, "On interstitial failed", "Interstitials", "On interstitial failed", "Triggered when an interstitial fails to load.", "onInterstitialFailed");
 
-AddCondition(10, cf_trigger, "On interstitial dismissed", "Interstitials", "On interstitial dismissed", "Triggered when an new interstitial is dismissed.", "onBannerDismissed");
+AddCondition(10, cf_trigger, "On interstitial dismissed", "Interstitials", "On interstitial dismissed", "Triggered when an new interstitial is dismissed.", "onInterstitialDismissed");
 
 /**
  * Actions
