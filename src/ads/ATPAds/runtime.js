@@ -197,8 +197,7 @@ cr.plugins_.ATPAds = function(runtime) {
             }    
         };        
         Acts.prototype.LoadBanner = function() {
-            if(!bannerReady)
-                self.banner.load();
+            self.banner.load();
         };
         Acts.prototype.SetLayout = function(layout) {
             self.banner.setLayout(layout);
@@ -215,8 +214,7 @@ cr.plugins_.ATPAds = function(runtime) {
                 self.interstitial.load();
         };
         Acts.prototype.LoadInterstitial = function() {
-            if(!interstitialReady)
-                self.interstitial.load();
+            self.interstitial.load();
         };
 
         pluginProto.acts = new Acts();
