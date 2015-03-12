@@ -74,6 +74,9 @@ Visit [our help center](https://support.ludei.com).
 
 ## Changelog
 
+### Mar 11, 2015
+* Demo for Ads added. 
+
 ### Mar 06, 2015
 * Atomic Plugins for Ads added. 
 * Supported Ad Services: Mopub and Admob. 
