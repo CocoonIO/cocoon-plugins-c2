@@ -201,7 +201,7 @@ cr.plugins_.ATPAds = function(runtime) {
                     case 2:     bannerLayout = "CUSTOM"; break;
             }
 
-            this.banner.setLayout(layout);
+            this.banner.setLayout(bannerLayout);
         };
         Acts.prototype.SetPosition = function(x,y) {
             this.banner.setPosition(x,y);
