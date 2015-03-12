@@ -21,8 +21,6 @@ function GetPluginSettings() {
 // Banners
 AddCondition(0, cf_trigger, "On banner shown", "Banners", "On banner shown", "Triggered when a banner is shown.", "onBannerShown");
 
-AddCondition(1, cf_trigger, "On banner hidden", "Banners", "On banner hidden", "Triggered when a banner is hidden.", "onBannerHidden");
-
 AddCondition(2, cf_trigger, "On banner clicked", "Banners", "On banner clicked", "Triggered when a banner is clicked.", "onBannerClicked");
 
 AddCondition(3, cf_trigger, "On banner loaded", "Banners", "On banner loaded", "Triggered when a new banner ad is cached.", "onBannerLoaded");

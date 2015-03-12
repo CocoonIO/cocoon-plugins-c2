@@ -83,30 +83,23 @@ cr.plugins_.ATPAds = function(runtime) {
                 
                 // banner events
                 this.banner.on("show", function() {
+                    //console.log("Banner showing MODAL CONTENT");
                     self.isShowingBanner = true;
                     self.runtime.trigger(cr.plugins_.ATPAds.prototype.cnds.onBannerShown, self);
                 });
-
                 this.banner.on("load", function() {
                     bannerReady = true;
                     self.runtime.trigger(cr.plugins_.ATPAds.prototype.cnds.onBannerLoaded, self);
                 });
-
-                this.banner.on("hide", function() {
-                    self.isShowingBanner = false;
-                    self.runtime.trigger(cr.plugins_.ATPAds.prototype.cnds.onBannerHidden, self);
-                });
-
                 this.banner.on("click", function() {
                     self.runtime.trigger(cr.plugins_.ATPAds.prototype.cnds.onBannerClicked, self);
                 });
-
                 this.banner.on("fail", function() {
                     bannerReady = false;
                     self.runtime.trigger(cr.plugins_.ATPAds.prototype.cnds.onBannerFailed, self);
                 });
-
                 this.banner.on("dismiss", function() {
+                     //console.log("Banner collapsed after showing its MODAL CONTENT");
                     self.runtime.trigger(cr.plugins_.ATPAds.prototype.cnds.onBannerDismissed, self);
                 });
 
@@ -119,16 +112,13 @@ cr.plugins_.ATPAds = function(runtime) {
                     interstitialReady = true;                      
                     self.runtime.trigger(cr.plugins_.ATPAds.prototype.cnds.onInterstitialLoaded, self);
                 });
-
                 this.interstitial.on("click", function() {
                     self.runtime.trigger(cr.plugins_.ATPAds.prototype.cnds.onInterstitialClicked, self);
                 });
-
                 this.interstitial.on("fail", function() {
                     interstitialReady = false;   
                     self.runtime.trigger(cr.plugins_.ATPAds.prototype.cnds.onInterstitialFailed, self);
                 });                
-
                 this.interstitial.on("dismiss", function() {
                     self.isShowingInterstitial = false;
                     interstitialReady = false;
@@ -185,36 +175,47 @@ cr.plugins_.ATPAds = function(runtime) {
         Acts.prototype.ShowBanner = function() {
             if(bannerReady) {
                 showBanner = true;
-                self.banner.show();
+                this.banner.show();
+                self.isShowingBanner = true;
             }    
             else 
-                self.banner.load();
+                this.banner.load();
         };
         Acts.prototype.HideBanner = function() {
             if(self.isShowingBanner){
                 showBanner = false;
-                self.banner.hide();
+                this.banner.hide();
+                self.isShowingBanner = false;
             }    
         };        
         Acts.prototype.LoadBanner = function() {
-            self.banner.load();
+            this.banner.load();
         };
         Acts.prototype.SetLayout = function(layout) {
-            self.banner.setLayout(layout);
+
+            var bannerLayout;
+ 
+            switch (layout) {
+                    case 0:     bannerLayout = "TOP_CENTER"; break;
+                    case 1:     bannerLayout = "BOTTOM_CENTER"; break;
+                    case 2:     bannerLayout = "CUSTOM"; break;
+            }
+
+            this.banner.setLayout(layout);
         };
         Acts.prototype.SetPosition = function(x,y) {
-            self.banner.setPosition(x,y);
+            this.banner.setPosition(x,y);
         };
 
         // interstitial actions
         Acts.prototype.ShowInterstitial = function() {
             if(interstitialReady)
-                self.interstitial.show(); 
+                this.interstitial.show(); 
             else 
-                self.interstitial.load();
+                this.interstitial.load();
         };
         Acts.prototype.LoadInterstitial = function() {
-            self.interstitial.load();
+            this.interstitial.load();
         };
 
         pluginProto.acts = new Acts();
