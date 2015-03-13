@@ -1,7 +1,7 @@
 /**
  * Object holder for the plugin
  */
-cr.plugins_.ATPAds = function(runtime) {
+cr.plugins_.ATPInApps = function(runtime) {
     this.runtime = runtime;
 };
 
@@ -9,10 +9,12 @@ cr.plugins_.ATPAds = function(runtime) {
  * C2 plugin
  */
 (function() {
-        var showBanner = false;
-        var bannerReady = false;
-        var interstitialReady = false;    
-        var pluginProto = cr.plugins_.ATPAds.prototype;
+       
+        var PurchaseTransactionId = "";
+        var PurchaseProductId = "";
+        var products_list = [];
+
+        var pluginProto = cr.plugins_.ATPInApps.prototype;
         pluginProto.Type = function(plugin) {
             this.plugin = plugin;
             this.runtime = plugin.runtime;
@@ -31,191 +33,116 @@ cr.plugins_.ATPAds = function(runtime) {
         var self;
         
         instanceProto.onCreate = function() {
-                this.isShowingBanner = false;
-                this.isShowingInterstitial = false;
-
-                this.androidBannerId = this.properties[0];
-                
-                switch (this.properties[1]) {
-                    case 0:     this.androidBannerSize = "SMART"; break;
-                    case 1:     this.androidBannerSize = "BANNER"; break;
-                    case 2:     this.androidBannerSize = "MEDIUM_REC"; break;
-                    case 3:     this.androidBannerSize = "LEADERBOARD"; break;
-                }
-                    
-                this.androidInterstitialId = this.properties[2];
-                
-                this.iosBannerId = this.properties[3];
-
-                switch (this.properties[4]) {
-                    case 0:     this.iosBannerSize = "SMART"; break;
-                    case 1:     this.iosBannerSize = "BANNER"; break;
-                    case 2:     this.iosBannerSize = "MEDIUM_REC"; break;
-                    case 3:     this.iosBannerSize = "LEADERBOARD"; break;
-                }
-
-                this.iosInterstitialId = this.properties[5];
-                
-                if (this.runtime.isAndroid)
-                {
-                    this.bannerAdunit = this.androidBannerId;
-                    this.bannerSize = this.androidBannerSize;
-                    this.interstitialAdunit = this.androidInterstitialId;
-                }
-                else if (this.runtime.isiOS)
-                {
-                    this.bannerAdunit = this.iosBannerId;
-                    this.bannerSize = this.iosBannerSize;
-                    this.interstitialAdunit = this.iosInterstitialId;
-                }
-                else
-                {
-                    // unsupported platform
-                    this.bannerAdunit = "";
-                    this.interstitialAdunit = "";
-                }
-
-                this.banner = Cocoon.Ad.createBanner(this.bannerAdunit, this.bannerSize);
-
-                this.interstitial = Cocoon.Ad.createInterstitial(this.interstitialAdunit);
-
+            this.storeService = Cocoon.InApp;
+            this.triggerProduct = "";
+            this.storeServiceAvailable = (this.runtime.isCocoonJs && typeof Cocoon.Store.nativeAvailable !== "undefined");
+            this.onConsumePurchaseFailedTransactionId = "";
+            this.onConsumePurchaseCompleted = "";
+            this.onPurchaseCompleteInfo = "";
+               
                 self = this;
                 
-                // banner events
-                this.banner.on("show", function() {
-                    //console.log("Banner showing MODAL CONTENT");
-                    self.isShowingBanner = true;
-                    self.runtime.trigger(cr.plugins_.ATPAds.prototype.cnds.onBannerShown, self);
-                });
-                this.banner.on("load", function() {
-                    bannerReady = true;
-                    self.runtime.trigger(cr.plugins_.ATPAds.prototype.cnds.onBannerLoaded, self);
-                });
-                this.banner.on("click", function() {
-                    self.runtime.trigger(cr.plugins_.ATPAds.prototype.cnds.onBannerClicked, self);
-                });
-                this.banner.on("fail", function() {
-                    bannerReady = false;
-                    self.runtime.trigger(cr.plugins_.ATPAds.prototype.cnds.onBannerFailed, self);
-                });
-                this.banner.on("dismiss", function() {
-                     //console.log("Banner collapsed after showing its MODAL CONTENT");
-                    self.runtime.trigger(cr.plugins_.ATPAds.prototype.cnds.onBannerDismissed, self);
-                });
-
-                // interstitial events
-                this.interstitial.on("show", function() {
-                    self.isShowingInterstitial = true;     
-                    self.runtime.trigger(cr.plugins_.ATPAds.prototype.cnds.onInterstitialShown, self);
-                });
-                this.interstitial.on("load", function() {
-                    interstitialReady = true;                      
-                    self.runtime.trigger(cr.plugins_.ATPAds.prototype.cnds.onInterstitialLoaded, self);
-                });
-                this.interstitial.on("click", function() {
-                    self.runtime.trigger(cr.plugins_.ATPAds.prototype.cnds.onInterstitialClicked, self);
-                });
-                this.interstitial.on("fail", function() {
-                    interstitialReady = false;   
-                    self.runtime.trigger(cr.plugins_.ATPAds.prototype.cnds.onInterstitialFailed, self);
-                });                
-                this.interstitial.on("dismiss", function() {
-                    self.isShowingInterstitial = false;
-                    interstitialReady = false;
-                    self.runtime.trigger(cr.plugins_.ATPAds.prototype.cnds.onInterstitialDismissed, self);
-                });
+                // events
+               
         };
 
+        /**
+         * Plugin conditions
+         */
         function Cnds() {};
 
-        // banner conditions
-        Cnds.prototype.onBannerShown = function() {
+        Cnds.prototype.canPurchase = function() {
+            return this.storeService.canPurchase();
+        };
+        Cnds.prototype.onPurchaseStart = function() {
             return true;
         };
-        Cnds.prototype.onBannerHidden = function() {
+        Cnds.prototype.onPurchaseComplete = function() {
             return true;
         };
-        Cnds.prototype.onBannerLoaded = function() {
-            return true;
-        };
-        Cnds.prototype.onBannerClicked = function() {
+        Cnds.prototype.onPurchaseFail = function() {
             return true;
         };
         Cnds.prototype.onBannerFailed = function() {
              return true;
         };                
-        Cnds.prototype.onBannerDismissed = function() {
+        Cnds.prototype.isPurchased = function(productId) {
+            return this.storeService.isPurchased(productId);
+        };
+        Cnds.prototype.onProductsFetchComplete = function() {
             return true;
         };
-
-        // interstitial contditions
-        Cnds.prototype.onInterstitialShown = function() {
+        Cnds.prototype.onProductsFetchFail = function() {
             return true;
         };
-        Cnds.prototype.onInterstitialLoaded = function() {
+        Cnds.prototype.onConsumeFail = function() {
             return true;
         };
-        Cnds.prototype.onInterstitialClicked = function() {
-            return true;
-        };
-        Cnds.prototype.onInterstitialFailed = function() {
+        Cnds.prototype.onConsumeComplete = function() {
              return true;
         };           
-        Cnds.prototype.onInterstitialDismissed = function() {
+        Cnds.prototype.onRestorePurchasesComplete = function() {
             return true;
-        }
+        };
+        Cnds.prototype.onRestorePurchasesFail = function() {
+            return true;
+        };
 
         pluginProto.cnds = new Cnds();
+        
         /**
          * Plugin actions
          */
         function Acts() {};
 
-        // banner actions
-        Acts.prototype.ShowBanner = function() {
-            if(bannerReady) {
-                showBanner = true;
-                this.banner.show();
-                self.isShowingBanner = true;
-            }    
-            else 
-                this.banner.load();
+        Acts.prototype.GetProducts = function() {
+            if (this.storeService.canPurchase()){
+                products_list = this.storeService.getProducts();
+            } 
         };
-        Acts.prototype.HideBanner = function() {
-            if(self.isShowingBanner){
-                showBanner = false;
-                this.banner.hide();
-                self.isShowingBanner = false;
-            }    
+        Acts.prototype.Consume = function() {
+         
         };        
-        Acts.prototype.LoadBanner = function() {
-            this.banner.load();
+        Acts.prototype.Purchase = function(productId, quantity) {
+            this.storeService.purchase(productId, quantity, function(error) {
+                if(error){
+                    console.log("On product purchase failed: " + error);
+                    self.runtime.trigger(cr.plugins_.ATPInApps.prototype.cnds.onPurchaseFail, self);  
+                }
+                else {
+                    console.log("On product purchase completed");
+                    self.runtime.trigger(cr.plugins_.ATPInApps.prototype.cnds.onPurchaseComplete, self);  
+                }
+            });
         };
-        Acts.prototype.SetLayout = function(layout) {
+        Acts.prototype.FetchProducts = function(productIds) {
+         this.storeService.fetchProducts(products.split(","), funtion(error){   
 
-            var bannerLayout;
- 
-            switch (layout) {
-                    case 0:     bannerLayout = "TOP_CENTER"; break;
-                    case 1:     bannerLayout = "BOTTOM_CENTER"; break;
-                    case 2:     bannerLayout = "CUSTOM"; break;
-            }
+            if(error){
+                   console.log("On fetch products failed: " + error);
 
-            this.banner.setLayout(bannerLayout);
-        };
-        Acts.prototype.SetPosition = function(x,y) {
-            this.banner.setPosition(x,y);
-        };
+                   //MORE
+              }
+              else{
+                   console.log(JSON.stringify(products));
+                   //MORE
+              }     
+        });
 
-        // interstitial actions
-        Acts.prototype.ShowInterstitial = function() {
-            if(interstitialReady)
-                this.interstitial.show(); 
-            else 
-                this.interstitial.load();
         };
-        Acts.prototype.LoadInterstitial = function() {
-            this.interstitial.load();
+        Acts.prototype.RestorePurchases = function() {
+            this.storeService.restorePurchases(function(error) {
+                if (error){
+                    console.log("On restore purchases failed: " + error);
+                    self.runtime.trigger(cr.plugins_.ATPInApps.prototype.cnds.onRestorePurchasesFail, self);  
+                } else {
+                    console.log("On restore purchases completed");
+                    self.runtime.trigger(cr.plugins_.ATPInApps.prototype.cnds.onRestorePurchasesComplete, self);  
+                }
+            });
+        };
+        Acts.prototype.FinishPurchase = function() {
+          
         };
 
         pluginProto.acts = new Acts();

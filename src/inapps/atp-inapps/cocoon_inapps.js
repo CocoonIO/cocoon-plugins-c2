@@ -360,7 +360,7 @@
          *           console.log("Error: " + error);
          *      }
          *      else {
-         *           console.log("Successfully purchased);    
+         *           console.log("Successfully purchased");    
          *      }
          * });
          */

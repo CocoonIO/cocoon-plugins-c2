@@ -18,92 +18,81 @@ function GetPluginSettings() {
  * Conditions
  */
 
-AddCondition(0, 0, "Is store available", "In-app purchase", "Is store available", "Test if the store is available on the current platform.", "IsStoreAvailable");
+AddCondition(0, 0, "Is store available", "In-App Purchases", "Is store available", "Test if the store is available on the current platform.", "canPurchase");
 
 AddStringParam("Product ID", "A string identifying the product.");
-AddCondition(1, cf_trigger, "On purchase started", "In-app purchase", "On <i>{0}</i> purchase started", "Triggered when the user begins a product purchase.", "OnPurchaseStart");
+AddCondition(1, cf_trigger, "On purchase started", "In-App Purchases", "On <i>{0}</i> purchase started", "Triggered when the user begins a product purchase.", "onPurchaseStart");
 
 AddStringParam("Product ID", "A string identifying the product.");
-AddCondition(2, cf_trigger, "On purchase completed", "In-app purchase", "On <i>{0}</i> purchase completed", "Triggered when a purchase successfully completes.", "OnPurchaseComplete");
+AddCondition(2, cf_trigger, "On purchase completed", "In-App Purchases", "On <i>{0}</i> purchase completed", "Triggered when a purchase successfully completes.", "onPurchaseComplete");
 
 AddStringParam("Product ID", "A string identifying the product.");
-AddCondition(3, cf_trigger, "On purchase failed", "In-app purchase", "On <i>{0}</i> purchase failed", "Triggered when a purchase fails.", "OnPurchaseFail");
+AddCondition(3, cf_trigger, "On purchase failed", "In-App Purchases", "On <i>{0}</i> purchase failed", "Triggered when a purchase fails.", "onPurchaseFail");
 
 AddStringParam("Product ID", "A string identifying the product.");
-AddCondition(4, 0, "Is product purchased", "In-app purchase", "Is product <i>{0}</i> purchased", "Test if a particular product is purchased.", "IsProductPurchased");
+AddCondition(4, 0, "Is purchased","In-App Purchases", "Is product <i>{0}</i> purchased", "Test if a particular product is purchased.", "isPurchased");
 
-AddCondition(5, cf_trigger, "On input cancelled", "Keyboard input", "On keyboard input cancelled", "Triggered after opening a text input dialog which is then cancelled.", "OnKeyboardCancelled");
+AddCondition(7, cf_trigger, "On products fetch completed", "In-App Purchases", "On products fetch completed", "Triggered when all the products have been downloaded.", "onProductsFetchComplete");
 
-AddCondition(6, cf_trigger, "On input OK", "Keyboard input", "On keyboard input OK", "Triggered after opening a text input dialog which is then OK'd.", "OnKeyboardOK");
+AddCondition(8, cf_trigger, "On products fetch failed", "In-App Purchases", "On products fetch failed", "Triggered when the fetch product function fails. ", "onProductsFetchFail");
 
-AddCondition(7, cf_trigger, "On products fetch completed", "In-app purchase", "On products fetch completed", "Triggered when all the products have been downloaded.", "onProductsFetchCompleted");
+AddCondition(9, cf_trigger, "On consume purchase failed", "In-App Purchases", "On consume purchase failed", "Triggered when the consumption event has failed.", "onConsumeFail");
 
-AddCondition(8, cf_trigger, "On products fetch failed", "In-app purchase", "On products fetch failed", "Triggered when the fetch product function fails. ", "onProductsFetchFailed");
+AddCondition(10, cf_trigger, "On consume purchase completed", "In-App Purchases", "On consume purchase completed", "Triggered when the consumption event is completed.", "onConsumeComplete");
 
-AddCondition(9, cf_trigger, "On products fetch started", "In-app purchase", "On products fetch started", "Triggered when the download of products starts.", "onProductsFetchStarted");
+AddCondition(11, cf_trigger, "On restore Purchases Completed", "In-app purchase", "On restore purchases completed", "Called when the purchase operation is completed", "onRestorePurchasesComplete");
 
-AddCondition(10, cf_trigger, "On consume purchase failed", "In-app purchase", "On consume purchase failed", "Triggered when the consumption event has failed.", "onConsumePurchaseFailed");
+AddCondition(12, cf_trigger, "On restore Purchases Failed", "In-app purchase", "On restore purchases failed", "Called if the purchase operation has failed", "onRestorePurchasesFail");
+
 
 /**
  * Actions
  */
 
-// Banners
+AddAction(1, 0, "Update products list", "In-App Purchases", "Get products", "Returns all the locally cached InApp products.", "GetProducts");
 
-// Layout 
-AddComboParamOption("TOP_CENTER");
-AddComboParamOption("BOTTOM_CENTER");
-AddComboParamOption("CUSTOM");
-AddComboParam("Layout", "Choose where the banner ad will appear.");
-AddAction(4, 0, "Set banner layout", "Banners", "Set banner layout", "Set banner layout. If CUSTOM, 'set banner position' can be called afterwards.", "SetLayout");
-
-// Position 
-AddNumberParam("x", "The top lef x coordinate of the banner.");
-AddNumberParam("y", "The top lef y coordinate of the banner.");
-AddAction(5, 0, "Set banner position", "Banners", "Set banner position", "Set banner position given the x{0} and y{1} coordinates. It requires the CUSTOM layout (see 'set banner layout')", "SetPosition");
-
-// Show
-AddAction(6, 0, "Show banner", "Banners", "Show the banner ad", "Show a banner ad on the screen while the game is running.", "ShowBanner");
-
-// Hide
-AddAction(7, 0, "Hide banner", "Banners", "Hide the banner ad", "Hide any currently showing banner ad.", "HideBanner");
-
-// Load 
-AddAction(8, 0, "Load banner", "Banners", "Load a banner ad", "Start loading a banner ad in the background.", "LoadBanner");
-
-// Interstitials
-
-AddStringParam("Transaction Id", "The transaction id of the purchase you'd want to consume.");
 AddStringParam("Product id", "The product id of the purchase.");
-AddAction(21, 0, "Consume Purchase", "In-app purchase", "Consume Purchase", "Consumes a purchase", "ConsumePurchase");
+AddStringParam("Quantity", "The quantity of product you'd want to consume.");
+AddAction(2, 0, "Consume product", "In-App Purchases", "Consume product", "Consumes a certain quantity <b>{1}</b> of an already purchased product <b>{0}</b>.", "Consume");
+
+AddStringParam("Product ID", "A string identifying the product.");
+AddAction(3, 0, "Purchase product", "In-App Purchases", "Purchase product <b>{0}</b>", "Purchases a product by its ID.", "Purchase");
+
+AddStringParam("Product list", 'The product list followed by commas of products IDs that you want to fetch from store server, example: "golden.coins,magical.sword,health.potion"');
+AddAction(4, 0, "Fetch products from store", "In-App Purchases", "Fetches those products from store: <i>{0}</i>", "Fetch products from store", "FetchProducts");
+
+AddAction(5, 0, "Restore purchases", "In-App Purchases", "Restore purchases", "Restores all purchases from the platform's market.", "RestorePurchases");
+
+AddAction(7, 0, "Finish purchase", "In-App Purchases", "Finish Purchase", "Finishes a purchase transaction and removes the transaction from the transaction queue. You don't need to finish purchases if the autoFinishPurchases param is enabled in initialization (enabled by default)", "FinishPurchase");
 
 /**
  * Expressions
  */ 
 
-AddExpression(1, ef_return_number, "", "In-app purchase", "ProductCount", "Return the number of products available for purchase.");
+/*
+AddExpression(1, ef_return_number, "", "In-App Purchases", "ProductCount", "Return the number of products available for purchase.");
 
 AddNumberParam("Index", "Zero-based index of product to get.");
-AddExpression(2, ef_return_string, "", "In-app purchase", "ProductDescription", "Return the description of the Nth product.");
+AddExpression(2, ef_return_string, "", "In-App Purchases", "ProductDescription", "Return the description of the Nth product.");
 
 AddNumberParam("Index", "Zero-based index of product to get.");
-AddExpression(3, ef_return_string, "", "In-app purchase", "ProductLocalizedPrice", "Return the price of the Nth product in a localized format.");
+AddExpression(3, ef_return_string, "", "In-App Purchases", "ProductLocalizedPrice", "Return the price of the Nth product in a localized format.");
 
 AddNumberParam("Index", "Zero-based index of product to get.");
-AddExpression(4, ef_return_string, "", "In-app purchase", "ProductPrice", "Return the price of the Nth product.");
+AddExpression(4, ef_return_string, "", "In-App Purchases", "ProductPrice", "Return the price of the Nth product.");
 
 AddNumberParam("Index", "Zero-based index of product to get.");
-AddExpression(5, ef_return_string, "", "In-app purchase", "ProductAlias", "Return the alias of the Nth product.");
+AddExpression(5, ef_return_string, "", "In-App Purchases", "ProductAlias", "Return the alias of the Nth product.");
 
 AddNumberParam("Index", "Zero-based index of product to get.");
-AddExpression(6, ef_return_string, "", "In-app purchase", "ProductID", "Return the ID of the Nth product.");
+AddExpression(6, ef_return_string, "", "In-App Purchases", "ProductID", "Return the ID of the Nth product.");
 
 AddNumberParam("Index", "Zero-based index of product to get.");
-AddExpression(7, ef_return_string, "", "In-app purchase", "ProductTitle", "Return the title of the Nth product.");
+AddExpression(7, ef_return_string, "", "In-App Purchases", "ProductTitle", "Return the title of the Nth product.");
 
-AddExpression(9, ef_return_string, "", "In-app purchase", "PurchaseProductId", "Returns the product id of the last purchased item.");
-AddExpression(10, ef_return_string, "", "In-app purchase", "PurchaseTransactionId", "Returns the transaction id of the last purchased item.");
-
+AddExpression(9, ef_return_string, "", "In-App Purchases", "PurchaseProductId", "Returns the product id of the last purchased item.");
+AddExpression(10, ef_return_string, "", "In-App Purchases", "PurchaseTransactionId", "Returns the transaction id of the last purchased item.");
+*/
 
 ACESDone();
 
@@ -112,15 +101,9 @@ ACESDone();
  */
 
 var property_list = [
-    new cr.Property(ept_section, "Android", "", "Ad unit IDs for Android."),
-    new cr.Property(ept_text,   "Banner ID (Android)",  "", "Ad unit ID from admob or mopub for the banner ad."),
-    new cr.Property(ept_combo,  "Banner size (Android)",    "SMART",    "The size of the banner ad to display", "SMART|BANNER|MEDIUM_RECT|LEADERBOARD"),
-    new cr.Property(ept_text,   "Interstitial ID (Android)", "",        "Ad unit ID from admob or mopub for the interstitials."),
-    
-    new cr.Property(ept_section, "iOS", "", "Ad unit IDs for iOS."),
-    new cr.Property(ept_text,   "Banner ID (iOS)",  "", "Ad unit ID admob or mopub for the banner ad."),
-    new cr.Property(ept_combo,  "Banner size (iOS)",    "SMART",    "The size of the banner ad to display", "SMART|BANNER|MEDIUM_RECT|LEADERBOARD"),
-    new cr.Property(ept_text,   "Interstitial ID (iOS)",    "", "Ad unit ID admob or mopub for the interstitials.")
+
+    new cr.Property(ept_combo,  "Autofinish",    "True",    "If True, transactions will finish automatically", "True|False"),
+
 ];
 
 // Called by IDE when a new object type is to be created
