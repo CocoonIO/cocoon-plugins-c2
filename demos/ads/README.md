@@ -3,12 +3,12 @@ Ads demo
 
 ## How to run the demo on a device
 
-The following steps are the minimun required for running this project exported for cordova. You can try to configure the capx to see how the example works using your own AdUnits, or you can [run the provided compiled files](https://github.com/ludei/atomic-plugins-c2/tree/master/demos/ads#running-the already-compiled-files). 
+The following steps are the minimun required for running this project exported for cordova. You can try to [configure the .capx](https://github.com/ludei/atomic-plugins-c2/tree/master/demos/ads#configuring-the-capx) to see how the example works using your own AdUnits, or you can [run the provided compiled files](https://github.com/ludei/atomic-plugins-c2/tree/master/demos/ads#running-the-already-compiled-files). 
 
 ### Configuring the .capx 
 
-1. Open the .capx
-2. Click on the "ATP Ads" object. 
+1. Open the atpads-c2.capx
+2. Click on the *ATP Ads* object. 
 3. Add your AdUnits in the object properties. 
 4. Export the project for Cordova. 
 
@@ -18,14 +18,10 @@ The following steps are the minimun required for running this project exported f
 2. Paste the exported files except the **config.xml** in the *www* folder. 
 3. Paste the **config.xml** file on the *root* of the project. 
 4. Add the desired *plugins* in the project. At least it is neccesary to install one of [these](https://github.com/ludei/atomic-plugins-c2#ads-1). As long as the AdUnits included in the capx are correct and correspond to the plugin installed, the project will work properlly. 
-5. Run the project from the command line using "cordova run" command.
+5. Run the project from the command line using *cordova run* command.
 
 ### Running the already compiled files
 
 #### Android
 
-Run "adb install **path/to/file/**atpads-c2-debug.apk" from the command line. 
-
-#### iOS
-
-Use Xcode for running the attached atpads-c2-demo.xcodeproj file. 
+* Run *adb install *path/to/file/*atpads-c2-debug.apk* from the command line. 
