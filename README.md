@@ -15,7 +15,7 @@ The plugin can be configured by selecting the object "ATPAds" from the "Object t
 
 * **Close Construct 2**
 * Checkout the 'master' branch from this repository. You will see several folders, one called "common" and one more for each of the available plugins. Currently there is only one for Ads. 
-* Copy the folder which is inside the name of the plugin. They will always start by "atp". For example, inside "ads" there is one called "atpads". 
+* Copy the folder which is inside the name of the plugin. They will always start by "atp". For example, inside "ads" there is one called "atp-ads". 
 * Paste the whole folder into *_CONSTRUCT_2_INSTALLATION_FOLDER_*\exporters\html5\plugins.
 * Copy the content of the "common" folder. 
 * Paste it inside the "atp" folder you added in *_CONSTRUCT_2_INSTALLATION_FOLDER_*\exporters\html5\plugins.
