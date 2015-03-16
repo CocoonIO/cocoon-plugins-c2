@@ -100,6 +100,7 @@ cr.plugins_.ATPAds = function(runtime) {
                 });
                 this.banner.on("dismiss", function() {
                      //console.log("Banner collapsed after showing its MODAL CONTENT");
+                    self.isShowingBanner = false;
                     self.runtime.trigger(cr.plugins_.ATPAds.prototype.cnds.onBannerDismissed, self);
                 });
 
@@ -147,7 +148,9 @@ cr.plugins_.ATPAds = function(runtime) {
         Cnds.prototype.onBannerDismissed = function() {
             return true;
         };
-
+         Cnds.prototype.isShowingBanner = function() {
+            return this.isShowingBanner;
+        };
         // interstitial contditions
         Cnds.prototype.onInterstitialShown = function() {
             return true;
@@ -176,21 +179,25 @@ cr.plugins_.ATPAds = function(runtime) {
             if(bannerReady) {
                 showBanner = true;
                 this.banner.show();
-                self.isShowingBanner = true;
             }    
             else 
+                this.bannerReady = false;
                 this.banner.load();
         };
         Acts.prototype.HideBanner = function() {
-            if(self.isShowingBanner){
+            if(showBanner){
                 showBanner = false;
                 this.banner.hide();
-                self.isShowingBanner = false;
             }    
         };        
         Acts.prototype.LoadBanner = function() {
+            this.bannerReady = false; 
             this.banner.load();
         };
+        Cnds.prototype.isShowingInterstitial = function() {
+            return this.isShowingInterstitial;
+        };
+ 
         Acts.prototype.SetLayout = function(layout) {
 
             var bannerLayout;

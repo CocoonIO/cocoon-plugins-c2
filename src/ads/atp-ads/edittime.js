@@ -21,6 +21,8 @@ function GetPluginSettings() {
 // Banners
 AddCondition(0, cf_trigger, "On banner shown", "Banners", "On banner shown", "Triggered when a banner is shown.", "onBannerShown");
 
+// AddCondition(1, cf_none, "Is showing banner", "Banners", "Is showing banner", "True if currently showing a banner ad.", "isShowingBanner");
+
 AddCondition(2, cf_trigger, "On banner clicked", "Banners", "On banner clicked", "Triggered when a banner is clicked.", "onBannerClicked");
 
 AddCondition(3, cf_trigger, "On banner loaded", "Banners", "On banner loaded", "Triggered when a new banner ad is cached.", "onBannerLoaded");
@@ -40,6 +42,8 @@ AddCondition(9, cf_trigger, "On interstitial failed", "Interstitials", "On inter
 
 AddCondition(10, cf_trigger, "On interstitial dismissed", "Interstitials", "On interstitial dismissed", "Triggered when an new interstitial is dismissed.", "onInterstitialDismissed");
 
+// AddCondition(11, cf_none, "Is showing interstitial", "Interstitials", "Is showing interstitial", "True if currently showing a interstitial.", "isShowingInterstitial");
+
 /**
  * Actions
  */
@@ -51,29 +55,29 @@ AddComboParamOption("TOP_CENTER");
 AddComboParamOption("BOTTOM_CENTER");
 AddComboParamOption("CUSTOM");
 AddComboParam("Layout", "Choose where the banner ad will appear.");
-AddAction(4, 0, "Set banner layout", "Banners", "Set banner layout", "Set banner layout. If CUSTOM, 'set banner position' can be called afterwards.", "SetLayout");
+AddAction(4, af_none, "Set banner layout", "Banners", "Set banner layout", "Set banner layout. If CUSTOM, 'set banner position' can be called afterwards.", "SetLayout");
 
 // Position 
 AddNumberParam("x", "The top lef x coordinate of the banner.");
 AddNumberParam("y", "The top lef y coordinate of the banner.");
-AddAction(5, 0, "Set banner position", "Banners", "Set banner position", "Set banner position given the x{0} and y{1} coordinates. It requires the CUSTOM layout (see 'set banner layout')", "SetPosition");
+AddAction(5, af_none, "Set banner position", "Banners", "Set banner position", "Set banner position given the x{0} and y{1} coordinates. It requires the CUSTOM layout (see 'set banner layout')", "SetPosition");
 
 // Show
-AddAction(6, 0, "Show banner", "Banners", "Show the banner ad", "Show a banner ad on the screen while the game is running.", "ShowBanner");
+AddAction(6, af_none, "Show banner", "Banners", "Show the banner ad", "Show a banner ad on the screen while the game is running.", "ShowBanner");
 
 // Hide
-AddAction(7, 0, "Hide banner", "Banners", "Hide the banner ad", "Hide any currently showing banner ad.", "HideBanner");
+AddAction(7, af_none, "Hide banner", "Banners", "Hide the banner ad", "Hide any currently showing banner ad.", "HideBanner");
 
 // Load 
-AddAction(8, 0, "Load banner", "Banners", "Load a banner ad", "Start loading a banner ad in the background.", "LoadBanner");
+AddAction(8, af_none, "Load banner", "Banners", "Load a banner ad", "Start loading a banner ad in the background.", "LoadBanner");
 
 // Interstitials
 
 // Show
-AddAction(12, 0, "Show interstitial", "Interstitials", "Show the interstitial", "Show an interstitial on the screen while the game is running.", "ShowInterstitial");
+AddAction(12, af_none, "Show interstitial", "Interstitials", "Show the interstitial", "Show an interstitial on the screen while the game is running.", "ShowInterstitial");
 
-//Load 
-AddAction(13, 0, "Load interstitial", "Interstitials", "Load an interstitial", "Start loading an interstitial in the background.", "LoadInterstitial");
+// Load 
+AddAction(13, af_none, "Load interstitial", "Interstitials", "Load an interstitial", "Start loading an interstitial in the background.", "LoadInterstitial");
 
 ACESDone();
 
