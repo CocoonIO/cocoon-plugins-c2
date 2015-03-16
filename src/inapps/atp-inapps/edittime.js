@@ -49,62 +49,56 @@ AddCondition(12, cf_trigger, "On restore Purchases Failed", "In-app purchase", "
  * Actions
  */
 
-AddAction(1, 0, "Update products list", "In-App Purchases", "Get products", "Returns all the locally cached InApp products.", "GetProducts");
+AddAction(0, 0, "Update products list", "In-App Purchases", "Get products", "Returns all the locally cached InApp products.", "GetProducts");
 
 AddStringParam("Product id", "The product id of the purchase.");
 AddStringParam("Quantity", "The quantity of product you'd want to consume.");
-AddAction(2, 0, "Consume product", "In-App Purchases", "Consume product", "Consumes a certain quantity <b>{1}</b> of an already purchased product <b>{0}</b>.", "Consume");
+AddAction(1, 0, "Consume product", "In-App Purchases", "Consume product", "Consumes a certain quantity <b>{1}</b> of an already purchased product <b>{0}</b>.", "Consume");
 
 AddStringParam("Product ID", "A string identifying the product.");
-AddAction(3, 0, "Purchase product", "In-App Purchases", "Purchase product <b>{0}</b>", "Purchases a product by its ID.", "Purchase");
+AddAction(2, 0, "Purchase product", "In-App Purchases", "Purchase product <b>{0}</b>", "Purchases a product by its ID.", "Purchase");
 
 AddStringParam("Product list", 'The product list followed by commas of products IDs that you want to fetch from store server, example: "golden.coins,magical.sword,health.potion"');
-AddAction(4, 0, "Fetch products from store", "In-App Purchases", "Fetches those products from store: <i>{0}</i>", "Fetch products from store", "FetchProducts");
+AddAction(3, 0, "Fetch products from store", "In-App Purchases", "Fetches those products from store: <i>{0}</i>", "Fetch products from store", "FetchProducts");
 
-AddAction(5, 0, "Restore purchases", "In-App Purchases", "Restore purchases", "Restores all purchases from the platform's market.", "RestorePurchases");
-
-AddAction(7, 0, "Finish purchase", "In-App Purchases", "Finish Purchase", "Finishes a purchase transaction and removes the transaction from the transaction queue. You don't need to finish purchases if the autoFinishPurchases param is enabled in initialization (enabled by default)", "FinishPurchase");
+AddAction(4, 0, "Restore purchases", "In-App Purchases", "Restore purchases", "Restores all purchases from the platform's market.", "RestorePurchases");
 
 /**
  * Expressions
  */ 
 
-/*
-AddExpression(1, ef_return_number, "", "In-App Purchases", "ProductCount", "Return the number of products available for purchase.");
+AddExpression(0, ef_return_number, "", "In-App Purchases", "NumberOfProducts", "Return the number of products available for purchase.");
 
 AddNumberParam("Index", "Zero-based index of product to get.");
-AddExpression(2, ef_return_string, "", "In-App Purchases", "ProductDescription", "Return the description of the Nth product.");
+AddExpression(1, ef_return_string, "", "In-App Purchases", "ProductDescription", "Return the description of the Nth product.");
 
 AddNumberParam("Index", "Zero-based index of product to get.");
-AddExpression(3, ef_return_string, "", "In-App Purchases", "ProductLocalizedPrice", "Return the price of the Nth product in a localized format.");
+AddExpression(2, ef_return_string, "", "In-App Purchases", "ProductLocalizedPrice", "Return the price of the Nth product in a localized format.");
 
 AddNumberParam("Index", "Zero-based index of product to get.");
-AddExpression(4, ef_return_string, "", "In-App Purchases", "ProductPrice", "Return the price of the Nth product.");
+AddExpression(3, ef_return_string, "", "In-App Purchases", "ProductPrice", "Return the price of the Nth product.");
 
 AddNumberParam("Index", "Zero-based index of product to get.");
-AddExpression(5, ef_return_string, "", "In-App Purchases", "ProductAlias", "Return the alias of the Nth product.");
+AddExpression(4, ef_return_string, "", "In-App Purchases", "ProductId", "Return the ID of the Nth product.");
 
 AddNumberParam("Index", "Zero-based index of product to get.");
-AddExpression(6, ef_return_string, "", "In-App Purchases", "ProductID", "Return the ID of the Nth product.");
+AddExpression(5, ef_return_string, "", "In-App Purchases", "ProductTitle", "Return the title of the Nth product.");
 
-AddNumberParam("Index", "Zero-based index of product to get.");
-AddExpression(7, ef_return_string, "", "In-App Purchases", "ProductTitle", "Return the title of the Nth product.");
+AddExpression(6, ef_return_string, "", "In-App Purchases", "PurchaseProductId", "Returns the product id of the last purchased item.");
 
-AddExpression(9, ef_return_string, "", "In-App Purchases", "PurchaseProductId", "Returns the product id of the last purchased item.");
-AddExpression(10, ef_return_string, "", "In-App Purchases", "PurchaseTransactionId", "Returns the transaction id of the last purchased item.");
-*/
+AddExpression(7, ef_return_string, "", "In-App Purchases", "PurchaseTransactionId", "Returns the transaction id of the last purchased item.");
+
+AddExpression(8, ef_return_string, "", "In-App Purchases", "PurchaseQuantity", "Returns the quantity of purchased product id of the last purchased item.");
+
+AddExpression(9, ef_return_string, "", "In-App Purchases", "PurchaseDate", "Returns the date of the last purchased item.");
 
 ACESDone();
 
 /**
  * Plugin properties
  */
-
-var property_list = [
-
-    new cr.Property(ept_combo,  "Autofinish",    "True",    "If True, transactions will finish automatically", "True|False"),
-
-];
+ 
+var property_list = [];
 
 // Called by IDE when a new object type is to be created
 function CreateIDEObjectType() {

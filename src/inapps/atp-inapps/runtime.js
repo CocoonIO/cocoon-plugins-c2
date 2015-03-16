@@ -12,6 +12,9 @@ cr.plugins_.ATPInApps = function(runtime) {
        
         var PurchaseTransactionId = "";
         var PurchaseProductId = "";
+        var PurchaseQuantity = "";
+        var PurchaseDate = "";
+
         var products_list = [];
 
         var pluginProto = cr.plugins_.ATPInApps.prototype;
@@ -33,17 +36,47 @@ cr.plugins_.ATPInApps = function(runtime) {
         var self;
         
         instanceProto.onCreate = function() {
+            
             this.storeService = Cocoon.InApp;
+           
             this.triggerProduct = "";
-            this.storeServiceAvailable = (this.runtime.isCocoonJs && typeof Cocoon.Store.nativeAvailable !== "undefined");
+
             this.onConsumePurchaseFailedTransactionId = "";
             this.onConsumePurchaseCompleted = "";
             this.onPurchaseCompleteInfo = "";
-               
-                self = this;
-                
-                // events
-               
+            
+            self = this;
+
+            if(this.storeService.canPurchase()) {
+
+                this.storeService.on("purchase", {
+                    start: function(productId) {
+                        console.log("On product purchase started: " + productId);
+                        self.runtime.trigger(cr.plugins_.ATPInApps.prototype.cnds.onPurchaseStart, self);                     
+                    },
+                    error: function(productId, error) {
+                        console.log("On product purchase failed " + productId + ": " + JSON.stringify(error));
+                        self.runtime.trigger(cr.plugins_.ATPInApps.prototype.cnds.onPurchaseFail, self);  
+                    }
+                    complete: function(purchase) {
+                        PurchaseTransactionId = purchase.transactionId;
+                        PurchaseProductId = purchase.productId;
+                        PurchaseQuantity = purchase.quantity;
+                        PurchaseDate = purchase.purchaseDate;
+                        console.log("On product purchase completed: " + JSON.stringify(purchase));
+                        self.runtime.trigger(cr.plugins_.ATPInApps.prototype.cnds.onPurchaseComplete, self);
+                    }
+                });
+
+                this.storeService.initialize({
+                    autofinish: true
+                }, 
+                function(error){
+                    if(error){
+                        console.log("Error at service initialization: " + JSON.stringify(error));
+                    }
+                });
+            } 
         };
 
         /**
@@ -62,10 +95,7 @@ cr.plugins_.ATPInApps = function(runtime) {
         };
         Cnds.prototype.onPurchaseFail = function() {
             return true;
-        };
-        Cnds.prototype.onBannerFailed = function() {
-             return true;
-        };                
+        };               
         Cnds.prototype.isPurchased = function(productId) {
             return this.storeService.isPurchased(productId);
         };
@@ -100,40 +130,40 @@ cr.plugins_.ATPInApps = function(runtime) {
                 products_list = this.storeService.getProducts();
             } 
         };
-        Acts.prototype.Consume = function() {
-         
+        Acts.prototype.Consume = function(productId, quantity) {
+            this.storeService.consume(productId, quantity, function(consumed, error) {
+                if(error){
+                    console.log("On product consume failed: " + JSON.stringify(error));
+                    self.runtime.trigger(cr.plugins_.ATPInApps.prototype.cnds.onConsumeFail, self);
+                }
+                else{
+                    console.log("On product consume completed: " + consumed + "unit(s) consumed");
+                    self.runtime.trigger(cr.plugins_.ATPInApps.prototype.cnds.onConsumeComplete, self);
+                }       
+            });      
         };        
         Acts.prototype.Purchase = function(productId, quantity) {
-            this.storeService.purchase(productId, quantity, function(error) {
-                if(error){
-                    console.log("On product purchase failed: " + error);
-                    self.runtime.trigger(cr.plugins_.ATPInApps.prototype.cnds.onPurchaseFail, self);  
-                }
-                else {
-                    console.log("On product purchase completed");
-                    self.runtime.trigger(cr.plugins_.ATPInApps.prototype.cnds.onPurchaseComplete, self);  
-                }
-            });
+            this.storeService.purchase(productId, quantity);
         };
         Acts.prototype.FetchProducts = function(productIds) {
-         this.storeService.fetchProducts(products.split(","), funtion(error){   
-
-            if(error){
-                   console.log("On fetch products failed: " + error);
-
-                   //MORE
-              }
-              else{
-                   console.log(JSON.stringify(products));
-                   //MORE
-              }     
-        });
-
+            this.storeService.fetchProducts(products.split(","), funtion(error){   
+                if(error){
+                    console.log("On fetch products failed: "  + JSON.stringify(error));
+                    self.runtime.trigger(cr.plugins_.ATPInApps.prototype.cnds.onProductsFetchFail, self);  
+                }
+                else{
+                    for (var i = productIds.length - 1; i >= 0; i--) {
+                        console.log("Product fetched: " + productIds[i].productId);
+                    };
+                    console.log("On fetch products completed");
+                    self.runtime.trigger(cr.plugins_.ATPInApps.prototype.cnds.onProductsFetchComplete, self);
+                }     
+            });
         };
         Acts.prototype.RestorePurchases = function() {
             this.storeService.restorePurchases(function(error) {
                 if (error){
-                    console.log("On restore purchases failed: " + error);
+                    console.log("On restore purchases failed: " + JSON.stringify(error));
                     self.runtime.trigger(cr.plugins_.ATPInApps.prototype.cnds.onRestorePurchasesFail, self);  
                 } else {
                     console.log("On restore purchases completed");
@@ -141,10 +171,69 @@ cr.plugins_.ATPInApps = function(runtime) {
                 }
             });
         };
-        Acts.prototype.FinishPurchase = function() {
-          
-        };
 
         pluginProto.acts = new Acts();
 
+        /**
+         * Expressions
+         */
+        function Exps() {};
+
+        Exps.prototype.PurchaseTransactionId = function(ret) {
+            ret.set_string(PurchaseTransactionId);
+        }; 
+        Exps.prototype.PurchaseProductId = function(ret) {
+            ret.set_string(PurchaseProductId);
+        }; 
+        Exps.prototype.PurchaseQuantity = function(ret) {
+            ret.set_string(PurchaseQuantity);
+        }; 
+        Exps.prototype.PurchaseDate = function(ret) {
+            ret.set_string(PurchaseDate);
+        }; 
+        Exps.prototype.NumberOfProducts = function(ret) {
+            ret.set_int(products_list.length);
+        }; 
+        Exps.prototype.ProductDescription = function(ret, index) {
+            index = Math.floor(index);
+            if (index < 0 || index >= products_list.length) {
+                ret.set_string("");
+                return;
+            }
+            ret.set_string(products_list[index].description);
+        }; 
+        Exps.prototype.ProductLocalizedPrice = function(ret, index) {
+            index = Math.floor(index);
+            if (index < 0 || index >= products_list.length) {
+                ret.set_string("");
+                return;
+            }
+            ret.set_string(products_list[index].localizedPrice);
+        }; 
+        Exps.prototype.ProductPrice = function(ret, index) {
+            index = Math.floor(index);
+            if (index < 0 || index >= products_list.length) {
+                ret.set_string("");
+                return;
+            }
+            ret.set_string(products_list[index].price);
+        }; 
+        Exps.prototype.ProductId = function(ret, index) {
+            index = Math.floor(index);
+            if (index < 0 || index >= products_list.length) {
+                ret.set_string("");
+                return;
+            }
+            ret.set_string(products_list[index].productId);
+        }; 
+        Exps.prototype.ProductTitle = function(ret, index) {
+            index = Math.floor(index);
+            if (index < 0 || index >= products_list.length) {
+                ret.set_string("");
+                return;
+            }
+            ret.set_string(products_list[index].title);
+        }; 
+
+        pluginProto.exps = new Exps();
 }());
