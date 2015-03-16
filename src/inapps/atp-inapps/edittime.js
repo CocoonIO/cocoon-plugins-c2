@@ -40,10 +40,9 @@ AddCondition(9, cf_trigger, "On consume purchase failed", "In-App Purchases", "O
 
 AddCondition(10, cf_trigger, "On consume purchase completed", "In-App Purchases", "On consume purchase completed", "Triggered when the consumption event is completed.", "onConsumeComplete");
 
-AddCondition(11, cf_trigger, "On restore Purchases Completed", "In-app purchase", "On restore purchases completed", "Called when the purchase operation is completed", "onRestorePurchasesComplete");
+AddCondition(11, cf_trigger, "On restore purchases completed", "In-app purchase", "On restore purchases completed", "Called when the purchase operation is completed", "onRestorePurchasesComplete");
 
-AddCondition(12, cf_trigger, "On restore Purchases Failed", "In-app purchase", "On restore purchases failed", "Called if the purchase operation has failed", "onRestorePurchasesFail");
-
+AddCondition(12, cf_trigger, "On restore purchases failed", "In-app purchase", "On restore purchases failed", "Called if the purchase operation has failed", "onRestorePurchasesFail");
 
 /**
  * Actions
@@ -67,6 +66,7 @@ AddAction(4, 0, "Restore purchases", "In-App Purchases", "Restore purchases", "R
  * Expressions
  */ 
 
+// products information
 AddExpression(0, ef_return_number, "", "In-App Purchases", "NumberOfProducts", "Return the number of products available for purchase.");
 
 AddNumberParam("Index", "Zero-based index of product to get.");
@@ -84,6 +84,7 @@ AddExpression(4, ef_return_string, "", "In-App Purchases", "ProductId", "Return 
 AddNumberParam("Index", "Zero-based index of product to get.");
 AddExpression(5, ef_return_string, "", "In-App Purchases", "ProductTitle", "Return the title of the Nth product.");
 
+// purchases information
 AddExpression(6, ef_return_string, "", "In-App Purchases", "PurchaseProductId", "Returns the product id of the last purchased item.");
 
 AddExpression(7, ef_return_string, "", "In-App Purchases", "PurchaseTransactionId", "Returns the transaction id of the last purchased item.");
@@ -97,7 +98,7 @@ ACESDone();
 /**
  * Plugin properties
  */
- 
+
 var property_list = [];
 
 // Called by IDE when a new object type is to be created

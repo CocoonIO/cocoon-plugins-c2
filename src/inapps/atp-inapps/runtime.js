@@ -41,24 +41,23 @@ cr.plugins_.ATPInApps = function(runtime) {
            
             this.triggerProduct = "";
 
-            this.onConsumePurchaseFailedTransactionId = "";
-            this.onConsumePurchaseCompleted = "";
-            this.onPurchaseCompleteInfo = "";
-            
             self = this;
 
             if(this.storeService.canPurchase()) {
 
                 this.storeService.on("purchase", {
                     start: function(productId) {
+                        self.triggerProduct = productId;
                         console.log("On product purchase started: " + productId);
                         self.runtime.trigger(cr.plugins_.ATPInApps.prototype.cnds.onPurchaseStart, self);                     
                     },
                     error: function(productId, error) {
+                        self.triggerProduct = productId;
                         console.log("On product purchase failed " + productId + ": " + JSON.stringify(error));
                         self.runtime.trigger(cr.plugins_.ATPInApps.prototype.cnds.onPurchaseFail, self);  
                     }
                     complete: function(purchase) {
+                        self.triggerProduct = productId;
                         PurchaseTransactionId = purchase.transactionId;
                         PurchaseProductId = purchase.productId;
                         PurchaseQuantity = purchase.quantity;
@@ -67,7 +66,6 @@ cr.plugins_.ATPInApps = function(runtime) {
                         self.runtime.trigger(cr.plugins_.ATPInApps.prototype.cnds.onPurchaseComplete, self);
                     }
                 });
-
                 this.storeService.initialize({
                     autofinish: true
                 }, 
@@ -87,14 +85,14 @@ cr.plugins_.ATPInApps = function(runtime) {
         Cnds.prototype.canPurchase = function() {
             return this.storeService.canPurchase();
         };
-        Cnds.prototype.onPurchaseStart = function() {
-            return true;
+        Cnds.prototype.onPurchaseStart = function(productId) {
+            return this.triggerProduct === productId;
         };
-        Cnds.prototype.onPurchaseComplete = function() {
-            return true;
+        Cnds.prototype.onPurchaseComplete = function(productId) {
+            return this.triggerProduct === productId;
         };
-        Cnds.prototype.onPurchaseFail = function() {
-            return true;
+        Cnds.prototype.onPurchaseFail = function(productId) {
+            return this.triggerProduct === productId;
         };               
         Cnds.prototype.isPurchased = function(productId) {
             return this.storeService.isPurchased(productId);
@@ -179,6 +177,7 @@ cr.plugins_.ATPInApps = function(runtime) {
          */
         function Exps() {};
 
+        // purchase information
         Exps.prototype.PurchaseTransactionId = function(ret) {
             ret.set_string(PurchaseTransactionId);
         }; 
@@ -191,6 +190,8 @@ cr.plugins_.ATPInApps = function(runtime) {
         Exps.prototype.PurchaseDate = function(ret) {
             ret.set_string(PurchaseDate);
         }; 
+
+        // products information
         Exps.prototype.NumberOfProducts = function(ret) {
             ret.set_int(products_list.length);
         }; 
