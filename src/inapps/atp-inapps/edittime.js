@@ -50,7 +50,7 @@ AddCondition(12, cf_trigger, "On restore purchases failed", "In-app purchase", "
 
 AddAction(0, 0, "Update products list", "In-App Purchases", "Get products", "Returns all the locally cached InApp products.", "GetProducts");
 
-AddStringParam("Product id", "The product id of the purchase.");
+AddStringParam("Product ID", "A string identifying the product.");
 AddStringParam("Quantity", "The quantity of product you'd want to consume.");
 AddAction(1, 0, "Consume product", "In-App Purchases", "Consume product", "Consumes a certain quantity <b>{1}</b> of an already purchased product <b>{0}</b>.", "Consume");
 
@@ -67,31 +67,34 @@ AddAction(4, 0, "Restore purchases", "In-App Purchases", "Restore purchases", "R
  */ 
 
 // products information
-AddExpression(0, ef_return_number, "", "In-App Purchases", "NumberOfProducts", "Return the number of products available for purchase.");
+AddExpression(0, ef_return_number, "", "In-App Purchases", "NumberOfProducts", "Returns the number of products available for purchase.");
 
 AddNumberParam("Index", "Zero-based index of product to get.");
-AddExpression(1, ef_return_string, "", "In-App Purchases", "ProductDescription", "Return the description of the Nth product.");
+AddExpression(1, ef_return_string, "", "In-App Purchases", "ProductDescription", "Returs the description of the Nth product.");
 
 AddNumberParam("Index", "Zero-based index of product to get.");
-AddExpression(2, ef_return_string, "", "In-App Purchases", "ProductLocalizedPrice", "Return the price of the Nth product in a localized format.");
+AddExpression(2, ef_return_string, "", "In-App Purchases", "ProductLocalizedPrice", "Returns the price of the Nth product in a localized format.");
 
 AddNumberParam("Index", "Zero-based index of product to get.");
-AddExpression(3, ef_return_string, "", "In-App Purchases", "ProductPrice", "Return the price of the Nth product.");
+AddExpression(3, ef_return_string, "", "In-App Purchases", "ProductPrice", "Returns the price of the Nth product.");
 
 AddNumberParam("Index", "Zero-based index of product to get.");
-AddExpression(4, ef_return_string, "", "In-App Purchases", "ProductId", "Return the ID of the Nth product.");
+AddExpression(4, ef_return_string, "", "In-App Purchases", "ProductId", "Returns the ID of the Nth product.");
 
 AddNumberParam("Index", "Zero-based index of product to get.");
-AddExpression(5, ef_return_string, "", "In-App Purchases", "ProductTitle", "Return the title of the Nth product.");
+AddExpression(5, ef_return_string, "", "In-App Purchases", "ProductTitle", "Returns the title of the Nth product.");
+
+AddStringParam("Product ID", "A string identifying the product.");
+AddExpression(6, ef_return_string, "", "In-App Purchases", "ProductStock", "Returns the stock of the given Product ID.");
 
 // purchases information
-AddExpression(6, ef_return_string, "", "In-App Purchases", "PurchaseProductId", "Returns the product id of the last purchased item.");
+AddExpression(7, ef_return_string, "", "In-App Purchases", "PurchaseProductId", "Returns the product id of the last purchased item.");
 
-AddExpression(7, ef_return_string, "", "In-App Purchases", "PurchaseTransactionId", "Returns the transaction id of the last purchased item.");
+AddExpression(8, ef_return_string, "", "In-App Purchases", "PurchaseTransactionId", "Returns the transaction id of the last purchased item.");
 
-AddExpression(8, ef_return_string, "", "In-App Purchases", "PurchaseQuantity", "Returns the quantity of purchased product id of the last purchased item.");
+AddExpression(9, ef_return_string, "", "In-App Purchases", "PurchaseQuantity", "Returns the quantity of purchased product id of the last purchased item.");
 
-AddExpression(9, ef_return_string, "", "In-App Purchases", "PurchaseDate", "Returns the date of the last purchased item.");
+AddExpression(10, ef_return_string, "", "In-App Purchases", "PurchaseDate", "Returns the date of the last purchased item.");
 
 ACESDone();
 

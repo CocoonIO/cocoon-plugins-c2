@@ -235,6 +235,8 @@ cr.plugins_.ATPInApps = function(runtime) {
             }
             ret.set_string(products_list[index].title);
         }; 
-
+        Exps.prototype.ProductStock = function(ret, productId) {
+            ret.set_string(this.storeService.stockOfProduct(productId));
+        }; 
         pluginProto.exps = new Exps();
 }());
