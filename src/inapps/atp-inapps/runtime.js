@@ -185,7 +185,7 @@ cr.plugins_.ATPInApps = function(runtime) {
             ret.set_string(PurchaseProductId);
         }; 
         Exps.prototype.PurchaseQuantity = function(ret) {
-            ret.set_string(PurchaseQuantity);
+            ret.set_int(PurchaseQuantity);
         }; 
         Exps.prototype.PurchaseDate = function(ret) {
             ret.set_string(PurchaseDate);
@@ -236,7 +236,7 @@ cr.plugins_.ATPInApps = function(runtime) {
             ret.set_string(products_list[index].title);
         }; 
         Exps.prototype.ProductStock = function(ret, productId) {
-            ret.set_string(this.storeService.stockOfProduct(productId));
+            ret.set_int(this.storeService.stockOfProduct(productId));
         }; 
         pluginProto.exps = new Exps();
 }());

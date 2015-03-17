@@ -42,7 +42,7 @@ AddCondition(9, cf_trigger, "On interstitial failed", "Interstitials", "On inter
 
 AddCondition(10, cf_trigger, "On interstitial dismissed", "Interstitials", "On interstitial dismissed", "Triggered when an new interstitial is dismissed.", "onInterstitialDismissed");
 
-// AddCondition(11, cf_none, "Is showing interstitial", "Interstitials", "Is showing interstitial", "True if currently showing a interstitial.", "isShowingInterstitial");
+AddCondition(11, cf_none, "Is showing interstitial", "Interstitials", "Is showing interstitial", "True if currently showing a interstitial.", "isShowingInterstitial");
 
 /**
  * Actions

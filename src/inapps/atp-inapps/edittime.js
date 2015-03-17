@@ -18,7 +18,7 @@ function GetPluginSettings() {
  * Conditions
  */
 
-AddCondition(0, 0, "Is store available", "In-App Purchases", "Is store available", "Test if the store is available on the current platform.", "canPurchase");
+AddCondition(0, cf_none, "Is store available", "In-App Purchases", "Is store available", "Test if the store is available on the current platform.", "canPurchase");
 
 AddStringParam("Product ID", "A string identifying the product.");
 AddCondition(1, cf_trigger, "On purchase started", "In-App Purchases", "On <i>{0}</i> purchase started", "Triggered when the user begins a product purchase.", "onPurchaseStart");
@@ -48,19 +48,19 @@ AddCondition(12, cf_trigger, "On restore purchases failed", "In-app purchase", "
  * Actions
  */
 
-AddAction(0, 0, "Update products list", "In-App Purchases", "Get products", "Returns all the locally cached InApp products.", "GetProducts");
+AddAction(0, af_none, "Update products list", "In-App Purchases", "Get products", "Returns all the locally cached InApp products.", "GetProducts");
 
 AddStringParam("Product ID", "A string identifying the product.");
 AddStringParam("Quantity", "The quantity of product you'd want to consume.");
-AddAction(1, 0, "Consume product", "In-App Purchases", "Consume product", "Consumes a certain quantity <b>{1}</b> of an already purchased product <b>{0}</b>.", "Consume");
+AddAction(1, af_none, "Consume product", "In-App Purchases", "Consume product", "Consumes a certain quantity <b>{1}</b> of an already purchased product <b>{0}</b>.", "Consume");
 
 AddStringParam("Product ID", "A string identifying the product.");
-AddAction(2, 0, "Purchase product", "In-App Purchases", "Purchase product <b>{0}</b>", "Purchases a product by its ID.", "Purchase");
+AddAction(2, af_none, "Purchase product", "In-App Purchases", "Purchase product <b>{0}</b>", "Purchases a product by its ID.", "Purchase");
 
 AddStringParam("Product list", 'The product list followed by commas of products IDs that you want to fetch from store server, example: "golden.coins,magical.sword,health.potion"');
-AddAction(3, 0, "Fetch products from store", "In-App Purchases", "Fetches those products from store: <i>{0}</i>", "Fetch products from store", "FetchProducts");
+AddAction(3, af_none, "Fetch products from store", "In-App Purchases", "Fetches those products from store: <i>{0}</i>", "Fetch products from store", "FetchProducts");
 
-AddAction(4, 0, "Restore purchases", "In-App Purchases", "Restore purchases", "Restores all purchases from the platform's market.", "RestorePurchases");
+AddAction(4, af_none, "Restore purchases", "In-App Purchases", "Restore purchases", "Restores all purchases from the platform's market.", "RestorePurchases");
 
 /**
  * Expressions
@@ -92,9 +92,9 @@ AddExpression(7, ef_return_string, "", "In-App Purchases", "PurchaseProductId", 
 
 AddExpression(8, ef_return_string, "", "In-App Purchases", "PurchaseTransactionId", "Returns the transaction id of the last purchased item.");
 
-AddExpression(9, ef_return_string, "", "In-App Purchases", "PurchaseQuantity", "Returns the quantity of purchased product id of the last purchased item.");
+AddExpression(9, ef_return_number, "", "In-App Purchases", "PurchaseQuantity", "Returns the quantity of purchased product id of the last purchased item.");
 
-AddExpression(10, ef_return_string, "", "In-App Purchases", "PurchaseDate", "Returns the date of the last purchased item.");
+AddExpression(10, ef_return_number, "", "In-App Purchases", "PurchaseDate", "Returns the date of the last purchased item.");
 
 ACESDone();
 
