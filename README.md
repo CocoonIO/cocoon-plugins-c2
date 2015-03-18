@@ -9,6 +9,10 @@ This plugins can be used in Construct 2. It requires a cordova exportation.
 
 The plugin can be configured by selecting the object "ATPAds" from the "Object types" list inside Construct 2.
 
+### InApps
+
+The plugin can be configured by selecting the object "ATPInApps" from the "Object types" list inside Construct 2.
+
 ## Installation
 
 ### Manual installation
@@ -70,22 +74,17 @@ In addition, there are optional MoPub adapters for iOS and Android.
 After the cordova exportation and the creation of the project, one of the following plugins are needed, depending on the Store you want to use. Copy and paste the command for installing the plugin in your project. 
 
 #### Google Play 
-
 ```
 	cordova plugin add com.ludei.inapps.android.googleplay;
 ```
 #### Amazon App Store 
-
 ```
 	cordova plugin add con.ludei.inapps.android.amazon;
-
 ```
 #### Apple App Store
-
 ```
 	cordova plugin add com.ludei.inapps.ios.appstore;
 ```
-
 ## Important information to take into account 
 
 You can use this plugins in the Webview+ for cordova (ios and android), but not yet at the cloud or in Canvas+. 
