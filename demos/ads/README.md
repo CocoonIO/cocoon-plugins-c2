@@ -24,4 +24,4 @@ The following steps are the minimun required for running this project exported f
 
 #### Android
 
-* Run *adb install *path/to/file/*atpads-c2-debug.apk* from the command line. 
+* Run *adb install PATH/TO/FILE/atpads-c2-debug.apk* from the command line. 
