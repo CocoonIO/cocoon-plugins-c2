@@ -64,6 +64,28 @@ In addition, there are optional MoPub adapters for iOS and Android.
 	cordova plugin add com.ludei.ads.ios.mopub.admob;
 	cordova plugin add com.ludei.ads.ios.mopub.millennial;
 ```
+
+### In-App Purchases
+
+After the cordova exportation and the creation of the project, one of the following plugins are needed, depending on the Store you want to use. Copy and paste the command for installing the plugin in your project. 
+
+#### Google Play 
+
+```
+	cordova plugin add com.ludei.inapps.android.googleplay;
+```
+#### Amazon App Store 
+
+```
+	cordova plugin add con.ludei.inapps.android.amazon;
+
+```
+#### Apple App Store
+
+```
+	cordova plugin add com.ludei.inapps.ios.appstore;
+```
+
 ## Important information to take into account 
 
 You can use this plugins in the Webview+ for cordova (ios and android), but not yet at the cloud or in Canvas+. 
@@ -73,6 +95,10 @@ You can use this plugins in the Webview+ for cordova (ios and android), but not 
 Visit [our help center](https://support.ludei.com).
 
 ## Changelog
+
+### Mar 18, 2015
+* Atomic Plugins for InApps added. 
+* Supported Stores: Google Play, Amazon App Store and Apple App Store.
 
 ### Mar 11, 2015
 * Demo for Ads added. 
