@@ -55,10 +55,11 @@ AddStringParam("Quantity", "The quantity of product you'd want to consume.");
 AddAction(1, af_none, "Consume product", "In-App Purchases", "Consume product", "Consumes a certain quantity <b>{1}</b> of an already purchased product <b>{0}</b>.", "Consume");
 
 AddStringParam("Product ID", "A string identifying the product.");
+AddStringParam("Quantity", "The quantity of product you'd want to purchase.");
 AddAction(2, af_none, "Purchase product", "In-App Purchases", "Purchase product <b>{0}</b>", "Purchases a product by its ID.", "Purchase");
 
 AddStringParam("Product list", 'The product list followed by commas of products IDs that you want to fetch from store server, example: "golden.coins,magical.sword,health.potion"');
-AddAction(3, af_none, "Fetch products from store", "In-App Purchases", "Fetches those products from store: <i>{0}</i>", "Fetch products from store", "FetchProducts");
+AddAction(3, af_none, "Fetch products from store", "In-App Purchases", "Fetch products from store: <i>{0}</i>", "Fetches the selected products from store", "FetchProducts");
 
 AddAction(4, af_none, "Restore purchases", "In-App Purchases", "Restore purchases", "Restores all purchases from the platform's market.", "RestorePurchases");
 
