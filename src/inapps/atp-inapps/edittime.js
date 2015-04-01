@@ -48,15 +48,15 @@ AddCondition(12, cf_trigger, "On restore purchases failed", "In-app purchase", "
  * Actions
  */
 
-AddAction(0, af_none, "Update products list", "In-App Purchases", "Get products", "Returns all the locally cached InApp products.", "GetProducts");
+AddAction(0, af_none, "Update products list", "In-App Purchases", "Update products list", "Returns all the locally cached InApp products.", "GetProducts");
 
 AddStringParam("Product ID", "A string identifying the product.");
 AddNumberParam("Quantity", "The quantity of product you'd want to consume.");
-AddAction(1, af_none, "Consume product", "In-App Purchases", "Consume product", "Consumes a certain quantity <b>{1}</b> of an already purchased product <b>{0}</b>.", "Consume");
+AddAction(1, af_none, "Consume product", "In-App Purchases", "Consume product: <i>{0}</i> x <i>{1}</i>", "Consumes a certain quantity <i>{1}</i> of an already purchased product <i>{0}</i>.", "Consume");
 
 AddStringParam("Product ID", "A string identifying the product.");
 AddNumberParam("Quantity", "The quantity of product you'd want to purchase.");
-AddAction(2, af_none, "Purchase product", "In-App Purchases", "Purchase product <b>{0}</b>", "Purchases a product by its ID.", "Purchase");
+AddAction(2, af_none, "Purchase product", "In-App Purchases", "Purchase product: <i>{0}</i> x <i>{1}</i>", "Purchases a product given its ID and quantity.", "Purchase");
 
 AddStringParam("Product list", 'The product list followed by commas of products IDs that you want to fetch from store server, example: "golden.coins,magical.sword,health.potion"');
 AddAction(3, af_none, "Fetch products from store", "In-App Purchases", "Fetch products from store: <i>{0}</i>", "Fetches the selected products from store", "FetchProducts");

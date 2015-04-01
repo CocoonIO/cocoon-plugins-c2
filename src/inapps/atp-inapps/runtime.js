@@ -55,7 +55,7 @@ cr.plugins_.ATPInApps = function(runtime) {
                         self.triggerProduct = productId;
                         console.log("On product purchase failed " + productId + ": " + JSON.stringify(error));
                         self.runtime.trigger(cr.plugins_.ATPInApps.prototype.cnds.onPurchaseFail, self);  
-                    }
+                    },
                     complete: function(purchase) {
                         self.triggerProduct = productId;
                         PurchaseTransactionId = purchase.transactionId;
@@ -74,7 +74,7 @@ cr.plugins_.ATPInApps = function(runtime) {
                         console.log("Error at service initialization: " + JSON.stringify(error));
                     }
                 });
-            } 
+            }
         };
 
         /**
@@ -144,7 +144,7 @@ cr.plugins_.ATPInApps = function(runtime) {
             this.storeService.purchase(productId, quantity);
         };
         Acts.prototype.FetchProducts = function(productIds) {
-            this.storeService.fetchProducts(products.split(","), funtion(error){   
+            this.storeService.fetchProducts(productIds.split(","), function(error){   
                 if(error){
                     console.log("On fetch products failed: "  + JSON.stringify(error));
                     self.runtime.trigger(cr.plugins_.ATPInApps.prototype.cnds.onProductsFetchFail, self);  
@@ -236,7 +236,7 @@ cr.plugins_.ATPInApps = function(runtime) {
             ret.set_string(products_list[index].title);
         }; 
         Exps.prototype.ProductStock = function(ret, productId) {
-            ret.set_int(this.storeService.stockOfProduct(productId));
-        }; 
+            ret.set_int(this.storeService.stockOfProduct(productId));0
+        };  
         pluginProto.exps = new Exps();
 }());
