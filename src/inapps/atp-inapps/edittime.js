@@ -40,9 +40,9 @@ AddCondition(9, cf_trigger, "On consume purchase failed", "In-App Purchases", "O
 
 AddCondition(10, cf_trigger, "On consume purchase completed", "In-App Purchases", "On consume purchase completed", "Triggered when the consumption event is completed.", "onConsumeComplete");
 
-AddCondition(11, cf_trigger, "On restore purchases completed", "In-app purchase", "On restore purchases completed", "Called when the purchase operation is completed", "onRestorePurchasesComplete");
+AddCondition(11, cf_trigger, "On restore purchases completed", "In-App Purchases", "On restore purchases completed", "Called when the purchase operation is completed", "onRestorePurchasesComplete");
 
-AddCondition(12, cf_trigger, "On restore purchases failed", "In-app purchase", "On restore purchases failed", "Called if the purchase operation has failed", "onRestorePurchasesFail");
+AddCondition(12, cf_trigger, "On restore purchases failed", "In-App Purchases", "On restore purchases failed", "Called if the purchase operation has failed", "onRestorePurchasesFail");
 
 /**
  * Actions

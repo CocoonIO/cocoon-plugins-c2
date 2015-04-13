@@ -57,7 +57,7 @@ cr.plugins_.ATPInApps = function(runtime) {
                         self.runtime.trigger(cr.plugins_.ATPInApps.prototype.cnds.onPurchaseFail, self);  
                     },
                     complete: function(purchase) {
-                        self.triggerProduct = productId;
+                        self.triggerProduct = purchase.productId;
                         PurchaseTransactionId = purchase.transactionId;
                         PurchaseProductId = purchase.productId;
                         PurchaseQuantity = purchase.quantity;
@@ -88,12 +88,10 @@ cr.plugins_.ATPInApps = function(runtime) {
         Cnds.prototype.onPurchaseStart = function(productId) {
             return this.triggerProduct === productId;
         };
-        Cnds.prototype.onPurchaseComplete = function(productId) {
-            return this.triggerProduct === productId;
+        Cnds.prototype.onPurchaseComplete = function(purchase) {
+            return this.triggerProduct === purchase.productId;
         };
-        Cnds.prototype.onPurchaseFail = function(productId) {
-            return this.triggerProduct === productId;
-        };               
+             
         Cnds.prototype.isPurchased = function(productId) {
             return this.storeService.isPurchased(productId);
         };
@@ -135,7 +133,7 @@ cr.plugins_.ATPInApps = function(runtime) {
                     self.runtime.trigger(cr.plugins_.ATPInApps.prototype.cnds.onConsumeFail, self);
                 }
                 else{
-                    console.log("On product consume completed: " + consumed + "unit(s) consumed");
+                    console.log("On product consume completed: " + consumed + " unit(s) consumed");
                     self.runtime.trigger(cr.plugins_.ATPInApps.prototype.cnds.onConsumeComplete, self);
                 }       
             });      
@@ -144,14 +142,14 @@ cr.plugins_.ATPInApps = function(runtime) {
             this.storeService.purchase(productId, quantity);
         };
         Acts.prototype.FetchProducts = function(productIds) {
-            this.storeService.fetchProducts(productIds.split(","), function(error){   
+            this.storeService.fetchProducts(productIds.split(","), function(products, error){   
                 if(error){
                     console.log("On fetch products failed: "  + JSON.stringify(error));
                     self.runtime.trigger(cr.plugins_.ATPInApps.prototype.cnds.onProductsFetchFail, self);  
                 }
                 else{
-                    for (var i = productIds.length - 1; i >= 0; i--) {
-                        console.log("Product fetched: " + productIds[i].productId);
+                    for (var i = products.length - 1; i >= 0; i--) {
+                        console.log("Product fetched: " + products[i].productId);
                     };
                     console.log("On fetch products completed");
                     self.runtime.trigger(cr.plugins_.ATPInApps.prototype.cnds.onProductsFetchComplete, self);
