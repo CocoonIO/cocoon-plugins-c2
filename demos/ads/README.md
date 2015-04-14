@@ -18,8 +18,10 @@ The following steps are the minimun required for running this project exported f
 2. Paste the exported files except the **config.xml** in the *www* folder. 
 3. Paste the **config.xml** file on the *root* of the project. 
 4. Add the desired *plugins* in the project. At least it is neccesary to install one of [these](https://github.com/ludei/atomic-plugins-c2#ads-1). As long as the AdUnits included in the capx are correct and correspond to the plugin installed, the project will work properlly. 
-5. Run the project from the command line using *cordova run* command.
-
+5. Run the project from the command line:
+```
+	cordova run
+```
 ### Running the already compiled files
 
 #### Android

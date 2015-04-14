@@ -95,6 +95,10 @@ Visit [our help center](https://support.ludei.com).
 
 ## Changelog
 
+### Apr 14, 2015
+* Purchase events fixed for InApps.
+* Demo for InApps added. 
+
 ### Mar 18, 2015
 * Atomic Plugins for InApps added. 
 * Supported Stores: Google Play, Amazon App Store and Apple App Store.
