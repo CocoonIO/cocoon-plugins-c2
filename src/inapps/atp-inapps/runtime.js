@@ -103,11 +103,11 @@ cr.plugins_.ATPInApps = function(runtime) {
         Cnds.prototype.onProductsFetchFail = function() {
             return true;
         };
-        Cnds.prototype.onConsumeFail = function() {
-            return true;
+        Cnds.prototype.onConsumeFail = function(productId) {
+            return this.triggerProduct === productId;
         };
-        Cnds.prototype.onConsumeComplete = function() {
-             return true;
+        Cnds.prototype.onConsumeComplete = function(productId) {
+            return this.triggerProduct === productId;
         };           
         Cnds.prototype.onRestorePurchasesComplete = function() {
             return true;
@@ -132,10 +132,12 @@ cr.plugins_.ATPInApps = function(runtime) {
             this.storeService.consume(productId, quantity, function(consumed, error) {
                 if(error){
                     console.log("On product consume failed: " + JSON.stringify(error));
+                    self.triggerProduct = productId; 
                     self.runtime.trigger(cr.plugins_.ATPInApps.prototype.cnds.onConsumeFail, self);
                 }
                 else{
                     console.log("On product consume completed: " + consumed + " unit(s) consumed");
+                    self.triggerProduct = productId; 
                     self.runtime.trigger(cr.plugins_.ATPInApps.prototype.cnds.onConsumeComplete, self);
                 }       
             });      
