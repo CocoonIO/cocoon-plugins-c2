@@ -9,9 +9,17 @@ This plugins can be used in Construct 2. It requires a cordova exportation.
 
 The plugin can be configured by selecting the object "ATPAds" from the "Object types" list inside Construct 2.
 
+![Ads actions](../images/ads-actions.png)
+![Ads events](../images/ads-events.png)
+![Ads config](../images/ads-config.png)
+
 ### InApps
 
-The plugin can be configured by selecting the object "ATPInApps" from the "Object types" list inside Construct 2.
+The plugin is added by selecting the object "ATPInApps" from the "Object types" list inside Construct 2.
+
+![InApps actions](../images/inapps-actions.png)
+![InApps events](../images/inapps-events.png)
+![InApps expressions](../images/inapps-expressions.png)
 
 ## Installation
 
