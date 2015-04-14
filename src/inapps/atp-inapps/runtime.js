@@ -88,10 +88,12 @@ cr.plugins_.ATPInApps = function(runtime) {
         Cnds.prototype.onPurchaseStart = function(productId) {
             return this.triggerProduct === productId;
         };
-        Cnds.prototype.onPurchaseComplete = function(purchase) {
-            return this.triggerProduct === purchase.productId;
+        Cnds.prototype.onPurchaseComplete = function(productId) {
+            return this.triggerProduct === productId;
         };
-             
+        Cnds.prototype.onPurchaseFail = function(productId) {
+            return this.triggerProduct === productId;
+        };             
         Cnds.prototype.isPurchased = function(productId) {
             return this.storeService.isPurchased(productId);
         };
