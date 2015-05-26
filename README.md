@@ -72,8 +72,9 @@ In addition, there are optional MoPub adapters for iOS and Android.
 ```
 * iOS 
 ```
-	cordova plugin add com.ludei.ads.ios.mopub.charboost;
+	cordova plugin add con.ludei.ads.android.adcolony; // new 
 	cordova plugin add com.ludei.ads.ios.mopub.admob;
+	cordova plugin add com.ludei.ads.ios.mopub.charboost;
 	cordova plugin add com.ludei.ads.ios.mopub.millennial;
 ```
 
@@ -95,13 +96,17 @@ After the cordova exportation and the creation of the project, one of the follow
 ```
 ## Important information to take into account 
 
-You can use this plugins in the Webview+ for cordova (ios and android), but not yet at the cloud or in Canvas+. 
+You can use these plugins in Cocoon.io cloud compiler or using the CLI. They won't work in the old compiler. 
 
 ## Need help?
 
 Visit [our help center](https://support.ludei.com).
 
 ## Changelog
+
+### May 25, 2015
+* Repository moved to CocoonIO.
+* Adcolony adapter for iOS added. 
 
 ### Apr 14, 2015
 * Purchase events fixed for InApps.
