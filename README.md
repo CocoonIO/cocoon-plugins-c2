@@ -34,11 +34,15 @@ The plugin is added by selecting the object "ATPInApps" from the "Object types" 
 
 And that's all! You can open Contruct2 and start using them! 
 
-## Adding the plugins in a project after exportation 
+## Adding the plugins to a project after exportation 
 
 ### Ads 
 
-After the cordova exportation and the creation of the project, one of the following plugins are needed, depending on the Ad Service you want to use. Copy and paste the command for installing the plugin in your project. 
+After the cordova exportation and the creation of the project, one of the following plugins are needed, depending on the Ad Service you want to use. 
+
+If you are using the CLI, copy and paste the command for installing the plugin in your project. 
+
+If you are using the new Cocoon.io cloud compiler, select the plugin id from the plugin list in the project configuration and the plugin will be intalled automatically. 
 
 #### Admob 
 
@@ -80,7 +84,11 @@ In addition, there are optional MoPub adapters for iOS and Android.
 
 ### In-App Purchases
 
-After the cordova exportation and the creation of the project, one of the following plugins are needed, depending on the Store you want to use. Copy and paste the command for installing the plugin in your project. 
+After the cordova exportation and the creation of the project, one of the following plugins are needed, depending on the Store you want to use. 
+
+If you are using the CLI, copy and paste the command for installing the plugin in your project. 
+
+If you are using the new Cocoon.io cloud compiler, select the plugin id from the plugin list in the project configuration and the plugin will be intalled automatically. 
 
 #### Google Play 
 ```
