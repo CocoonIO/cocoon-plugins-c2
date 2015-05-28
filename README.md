@@ -29,10 +29,8 @@ The plugin is added by selecting the object "ATPInApps" from the "Object types" 
 * Checkout the 'master' branch from this repository. You will see several folders, one called "common" and one more for each of the available plugins. Currently there is only one for Ads. 
 * Copy the folder which is inside the name of the plugin. They will always start by "atp". For example, inside "ads" there is one called "atp-ads". 
 * Paste the whole folder into *_CONSTRUCT_2_INSTALLATION_FOLDER_*\exporters\html5\plugins.
-* Copy the content of the "common" folder. 
-* Paste it inside the "atp" folder you added in *_CONSTRUCT_2_INSTALLATION_FOLDER_*\exporters\html5\plugins.
 
-And that's all! You can open Contruct2 and start using them! 
+And that's all! You can open Contruct2 to start using them! 
 
 ## Adding the plugins to a project after exportation 
 
@@ -111,6 +109,9 @@ You can use these plugins in Cocoon.io cloud compiler or using the CLI. They won
 Visit [our help center](https://support.ludei.com).
 
 ## Changelog
+
+### May 28, 2015
+* Common folder removed, no longer required. 
 
 ### May 25, 2015
 * Repository moved to CocoonIO.

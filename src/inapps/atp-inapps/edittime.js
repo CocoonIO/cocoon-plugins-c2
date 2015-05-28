@@ -9,8 +9,7 @@ function GetPluginSettings() {
         "category": "Platform specific",
         "type": "object", // not in layout
         "rotatable": false,
-        "flags": pf_singleglobal,
-        "dependency": "cocoon.js;cocoon_inapps.js"
+        "flags": pf_singleglobal
     };
 };
 
