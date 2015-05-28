@@ -1,7 +1,7 @@
 Atomic Plugins for Construct 2
 ==================
 
-This plugins can be used in Construct 2. It requires a cordova exportation. 
+These plugins can be used in Construct 2. They require a cordova exportation. 
 
 ## Configuration
 
