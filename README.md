@@ -132,3 +132,12 @@ Visit [our help center](https://support.ludei.com).
 * Atomic Plugins for Ads added. 
 * Supported Ad Services: Mopub and Admob. 
 
+#License
+
+Mozilla Public License, version 2.0
+
+Copyright (c) 2015 Ludei 
+
+See [`MPL 2.0 License`](LICENSE)
+
+
