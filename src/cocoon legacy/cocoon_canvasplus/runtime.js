@@ -155,17 +155,16 @@ cr.plugins_.Cocoon_Canvasplus = function(runtime) {
         url = Cocoon.Utils.captureScreen(filename_, storage_type, capture_, gallery);
     
         Cocoon.Share.share({
-                    message: text_,
-                    image: url
-                }, function(activity, completed, error){
-                    if (completed) {
-                        self.runtime.trigger(cr.plugins_.Cocoon_Canvasplus.prototype.cnds.onShareSyncComplete, self);
-                    } else {
-                        self.runtime.trigger(cr.plugins_.Cocoon_Canvasplus.prototype.cnds.onShareSyncFail, self); 
-                        console.log(error);
-                    }     
-                });
-            }
+                message: text_,
+                image: url
+            }, function(activity, completed, error){
+                if (completed) {
+                    self.runtime.trigger(cr.plugins_.Cocoon_Canvasplus.prototype.cnds.onShareSyncComplete, self);
+                } else {
+                    self.runtime.trigger(cr.plugins_.Cocoon_Canvasplus.prototype.cnds.onShareSyncFail, self); 
+                    console.log(error);
+                }     
+            });
         });
     };
 
@@ -197,7 +196,6 @@ cr.plugins_.Cocoon_Canvasplus = function(runtime) {
                 });
             }
         });
-
     };    
 
     pluginProto.acts = new Acts();
