@@ -1,6 +1,6 @@
 function GetPluginSettings() {
     return {
-        "name": "Cocoon Canvas+",
+        "name": "Cocoon Canvasplus",
         "id": "Cocoon_Canvasplus",
         "version": "1.0",
         "description": "Access to Canvas+ basic functionalities",

@@ -21,6 +21,23 @@ The plugin is added by selecting the object "ATPInApps" from the "Object types" 
 ![InApps events](images/inapps-events.png)
 ![InApps expressions](images/inapps-expressions.png)
 
+### Native Share
+
+The plugin is added by selecting the object "ATPShare" from the "Object types" list inside Construct 2.
+
+![Native Share actions](images/share-actions.png)
+![Native Share events](images/share-events.png)
+
+### Cocoon Canvas+
+
+The plugin is added by selecting the object "CocoonCanvasplus" from the "Object types" list inside Construct 2.
+
+This plugin will only work inside Canvas+ webview engine in Cocoon.io cloud compiler. 
+
+![Cocoon Canvas+ actions](images/canvasplus-actions.png)
+![Cocoon Canvas+ events](images/canvasplus-events.png)
+![Cocoon Canvas+ expressions](images/canvasplus-expressions.png)
+
 ## Installation
 
 ### Manual installation
@@ -100,6 +117,22 @@ If you are using the new Cocoon.io cloud compiler, select the plugin id from the
 ```
 	cordova plugin add com.ludei.inapps.ios.appstore;
 ```
+
+### Native Share
+
+After the cordova exportation and the creation of the project, it is required to install the following plugin for cordova. 
+
+If you are using the CLI, copy and paste the command for installing the plugin in your project. 
+
+If you are using the new Cocoon.io cloud compiler, select the plugin id from the plugin list in the project configuration and the plugin will be intalled automatically. 
+
+```
+	cordova plugin add com.ludei.share;
+```
+### Cocoon Canvas+
+
+No additional plugins are required after exportation unless the sharing methods are used. If so, please, install the [Native share plugin](#native-share-2). 
+
 ## Important information to take into account 
 
 You can use these plugins in Cocoon.io cloud compiler or using the CLI. They won't work in the old compiler. 
@@ -109,6 +142,10 @@ You can use these plugins in Cocoon.io cloud compiler or using the CLI. They won
 Visit [our help center](https://support.ludei.com).
 
 ## Changelog
+
+### Jun 22, 2015
+* Atomic plugins for Native share added. 
+* Cocoon Canvas+ legacies added (Keyboard, open URL, exit, confirm, capture screen,...). 
 
 ### May 28, 2015
 * Common folder removed, no longer required. 

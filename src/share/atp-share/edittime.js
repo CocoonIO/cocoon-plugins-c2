@@ -21,7 +21,6 @@ AddCondition(0, cf_trigger, "On share complete", "Native share", "On share compl
 
 AddCondition(1, cf_trigger, "On share fail", "Native share", "On share fail", "Triggered when native share fails.", "onShareFail");
 
-
 /**
  * Actions
  */
