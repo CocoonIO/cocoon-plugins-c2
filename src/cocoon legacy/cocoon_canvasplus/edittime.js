@@ -120,7 +120,6 @@ AddComboParam("Save to gallery", "Specifies if the capture image should be store
 AddStringParam("Text", "The text content that will be shared");
 AddAction(6, af_none, "Capture screen sync and share", "Cocoon Canvas+", "Captures a image of the screen. It can capture everything, only the cocoon surface or only the system views.", "Captures a image of the screen synchronously and saves it to a file. Sync mode allows to capture the screen in the middle of a frame rendering and then shares the image. REQUIRED: ATP Share plugin installation at Cocoon.io.", "captureScreenSyncShare");
 
-
 AddStringParam("File name", "Desired file name and format (png or jpg). If no value is passed, 'capture.png' value is used by default");
 AddComboParamOption("The application storage");
 AddComboParamOption("Internal Storage");
