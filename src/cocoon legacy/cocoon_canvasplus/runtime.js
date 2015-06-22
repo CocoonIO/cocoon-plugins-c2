@@ -167,56 +167,55 @@ cr.plugins_.Cocoon_Canvasplus = function(runtime) {
         };
 
         Acts.prototype.captureScreenAsyncShare = function(filename_, storage_, capture_, gallery_, text_) {
-        if (!this.runtime.isCocoonJs)
-            return;
-        var storage_type = [Cocoon.Utils.StorageType.APP_STORAGE, Cocoon.Utils.StorageType.INTERNAL_STORAGE, Cocoon.Utils.StorageType.EXTERNAL_STORAGE, Cocoon.Utils.StorageType.TEMPORARY_STORAGE][storage_];
+            if (!this.runtime.isCocoonJs)
+                return;
+            var storage_type = [Cocoon.Utils.StorageType.APP_STORAGE, Cocoon.Utils.StorageType.INTERNAL_STORAGE, Cocoon.Utils.StorageType.EXTERNAL_STORAGE, Cocoon.Utils.StorageType.TEMPORARY_STORAGE][storage_];
 
-        var gallery = [true, false][gallery_];
+            var gallery = [true, false][gallery_];
 
-        Cocoon.Utils.captureScreenAsync(filename_, storage_type, capture_, gallery, function(url, error) {
-            if (error) {
-                self.runtime.trigger(cr.plugins_.Cocoon_Canvasplus.prototype.cnds.onCaptureScreenAsyncFail, self);
-                console.log(error);
-            } else {
-                self.runtime.trigger(cr.plugins_.Cocoon_Canvasplus.prototype.cnds.onCaptureScreenAsyncSuccess, self);
+            Cocoon.Utils.captureScreenAsync(filename_, storage_type, capture_, gallery, function(url, error) {
+                if (error) {
+                    self.runtime.trigger(cr.plugins_.Cocoon_Canvasplus.prototype.cnds.onCaptureScreenAsyncFail, self);
+                    console.log(error);
+                } else {
+                    self.runtime.trigger(cr.plugins_.Cocoon_Canvasplus.prototype.cnds.onCaptureScreenAsyncSuccess, self);
 
-                Cocoon.Share.share({
-                    message: text_,
-                    image: url
-                }, function(activity, completed, error) {
-                    if (completed) {
-                        self.runtime.trigger(cr.plugins_.Cocoon_Canvasplus.prototype.cnds.onShareAsyncComplete, self);
-                    } else {
-                        self.runtime.trigger(cr.plugins_.Cocoon_Canvasplus.prototype.cnds.onShareAsyncFail, self);
-                        console.log(error);
-                    }
-                });
-            }
+                    Cocoon.Share.share({
+                        message: text_,
+                        image: url
+                    }, function(activity, completed, error) {
+                        if (completed) {
+                            self.runtime.trigger(cr.plugins_.Cocoon_Canvasplus.prototype.cnds.onShareAsyncComplete, self);
+                        } else {
+                            self.runtime.trigger(cr.plugins_.Cocoon_Canvasplus.prototype.cnds.onShareAsyncFail, self);
+                            console.log(error);
+                        }
+                    });
+                }
+            });
         };
- 
-};
+    };
 
-pluginProto.acts = new Acts();
+    pluginProto.acts = new Acts();
 
-/**
- * Expressions
- */
-function Exps() {};
+    /**
+     * Expressions
+     */
+    function Exps() {};
 
-// Keyboard
-Exps.prototype.InputText = function(ret) {
-    ret.set_string(input_text);
-};
+    // Keyboard
+    Exps.prototype.InputText = function(ret) {
+        ret.set_string(input_text);
+    };
 
-Exps.prototype.CaptureScreenSync = function(ret) {
-    ret.set_string(capture_screen_sync);
-};
+    Exps.prototype.CaptureScreenSync = function(ret) {
+        ret.set_string(capture_screen_sync);
+    };
 
-Exps.prototype.CaptureScreenAsync = function(ret) {
-    ret.set_string(capture_screen_async);
-};
+    Exps.prototype.CaptureScreenAsync = function(ret) {
+        ret.set_string(capture_screen_async);
+    };
 
-pluginProto.exps = new Exps();
+    pluginProto.exps = new Exps();
 
 }());
-
