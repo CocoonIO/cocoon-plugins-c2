@@ -37,10 +37,6 @@ AddCondition(7, cf_trigger, "On capture screen sync and share fail", "Cocoon Can
 
 AddCondition(8, cf_trigger, "On capture screen sync and share success", "Cocoon Canvas+", "On capture screen sync and share success", "Triggered if the capture of the screen sync and sharing process completes successfully.", "onShareSyncComplete");
 
-AddCondition(9, cf_trigger, "On capture screen async and share fail", "Cocoon Canvas+", "On capture screen async and share fail", "Triggered if the capture of the screen async and sharing process fails.", "onShareAsyncFail");
-
-AddCondition(10, cf_trigger, "On capture screen async and share success", "Cocoon Canvas+", "On capture screen async and share success", "Triggered if the capture of the screen async and sharing process completes successfully.", "onShareAsyncComplete");
-
 /**
  * Actions
  */
@@ -119,22 +115,6 @@ AddComboParamOption("No");
 AddComboParam("Save to gallery", "Specifies if the capture image should be stored in the device image gallery or not.");
 AddStringParam("Text", "The text content that will be shared");
 AddAction(6, af_none, "Capture screen sync and share", "Cocoon Canvas+", "Captures a image of the screen. It can capture everything, only the cocoon surface or only the system views.", "Captures a image of the screen synchronously and saves it to a file. Sync mode allows to capture the screen in the middle of a frame rendering and then shares the image. REQUIRED: ATP Share plugin installation at Cocoon.io.", "captureScreenSyncShare");
-
-AddStringParam("File name", "Desired file name and format (png or jpg). If no value is passed, 'capture.png' value is used by default");
-AddComboParamOption("The application storage");
-AddComboParamOption("Internal Storage");
-AddComboParamOption("External Storage");
-AddComboParamOption("Temporary Storage");
-AddComboParam("Storage type", "The storageType type");
-AddComboParamOption("Captures everything");
-AddComboParamOption("Only captures cocoon surface");
-AddComboParamOption("Only captures system views");
-AddComboParam("Capture type", "The capture type");
-AddComboParamOption("Yes");
-AddComboParamOption("No");
-AddComboParam("Save to gallery", "Specifies if the capture image should be stored in the device image gallery or not");
-AddStringParam("Text", "The text content that will be shared");
-AddAction(7, af_none, "Capture screen async and share", "Cocoon Canvas+", "Captures a image of the screen. It can capture everything, only the cocoon surface or only the system views.", "Captures a image of the screen asynchronously and saves it to a file. Async mode captures a final frame as soon as possible and shares the image. REQUIRED: ATP Share plugin installation at Cocoon.io.", "captureScreenAsyncShare");
 
 /**
  * Expressions

@@ -116,8 +116,8 @@ cr.plugins_.Cocoon_Canvasplus = function(runtime) {
     Acts.prototype.captureScreenSync = function(filename_, storage_, capture_, gallery_) {
         if (!this.runtime.isCocoonJs)
             return;
-        var storage_type = [Cocoon.Utils.StorageType.APP_STORAGE, Cocoon.Utils.StorageType.INTERNAL_STORAGE, Cocoon.Utils.StorageType.EXTERNAL_STORAGE, Cocoon.Utils.StorageType.TEMPORARY_STORAGE][storage_];
-
+        var storage_type = ["APP_STORAGE", "INTERNAL_STORAGE", "EXTERNAL_STORAGE", "TEMPORARY_STORAGE"][storage_];
+                  
         var gallery = [true, false][gallery_];
 
         capture_screen_sync = Cocoon.Utils.captureScreen(filename_, storage_type, capture_, gallery);
@@ -126,10 +126,11 @@ cr.plugins_.Cocoon_Canvasplus = function(runtime) {
     Acts.prototype.captureScreenAsync = function(filename_, storage_, capture_, gallery_) {
         if (!this.runtime.isCocoonJs)
             return;
-        var storage_type = [Cocoon.Utils.StorageType.APP_STORAGE, Cocoon.Utils.StorageType.INTERNAL_STORAGE, Cocoon.Utils.StorageType.EXTERNAL_STORAGE, Cocoon.Utils.StorageType.TEMPORARY_STORAGE][storage_];
-
+        
+        var storage_type = ["APP_STORAGE", "INTERNAL_STORAGE", "EXTERNAL_STORAGE", "TEMPORARY_STORAGE"][storage_];
+                  
         var gallery = [true, false][gallery_];
-
+        
         Cocoon.Utils.captureScreenAsync(filename_, storage_type, capture_, gallery, function(url, error) {
             if (error) {
                 self.runtime.trigger(cr.plugins_.Cocoon_Canvasplus.prototype.cnds.onCaptureScreenAsyncFail, self);
@@ -143,10 +144,10 @@ cr.plugins_.Cocoon_Canvasplus = function(runtime) {
     Acts.prototype.captureScreenSyncShare = function(filename_, storage_, capture_, gallery_, text_) {
         if (!this.runtime.isCocoonJs)
             return;
-        var storage_type = [Cocoon.Utils.StorageType.APP_STORAGE, Cocoon.Utils.StorageType.INTERNAL_STORAGE, Cocoon.Utils.StorageType.EXTERNAL_STORAGE, Cocoon.Utils.StorageType.TEMPORARY_STORAGE][storage_];
-
+        var storage_type = ["APP_STORAGE", "INTERNAL_STORAGE", "EXTERNAL_STORAGE", "TEMPORARY_STORAGE"][storage_];
+                  
         var gallery = [true, false][gallery_];
-
+        
         url = Cocoon.Utils.captureScreen(filename_, storage_type, capture_, gallery);
 
         Cocoon.Share.share({
@@ -158,35 +159,6 @@ cr.plugins_.Cocoon_Canvasplus = function(runtime) {
             } else {
                 self.runtime.trigger(cr.plugins_.Cocoon_Canvasplus.prototype.cnds.onShareSyncFail, self);
                 console.log(error);
-            }
-        });
-    };
-
-    Acts.prototype.captureScreenAsyncShare = function(filename_, storage_, capture_, gallery_, text_) {
-        if (!this.runtime.isCocoonJs)
-            return;
-        var storage_type = ["APP_STORAGE", "INTERNAL_STORAGE", "EXTERNAL_STORAGE", "TEMPORARY_STORAGE"][storage_];
-        
-        var gallery = [true, false][gallery_];
-
-        Cocoon.Utils.captureScreenAsync(filename_, storage_type, capture_, gallery, function(url, error) {
-            if (error) {
-                self.runtime.trigger(cr.plugins_.Cocoon_Canvasplus.prototype.cnds.onCaptureScreenAsyncFail, self);
-                console.log(error);
-            } else {
-                self.runtime.trigger(cr.plugins_.Cocoon_Canvasplus.prototype.cnds.onCaptureScreenAsyncSuccess, self);
-
-                Cocoon.Share.share({
-                    message: text_,
-                    image: url
-                }, function(activity, completed, error) {
-                    if (completed) {
-                        self.runtime.trigger(cr.plugins_.Cocoon_Canvasplus.prototype.cnds.onShareAsyncComplete, self);
-                    } else {
-                        self.runtime.trigger(cr.plugins_.Cocoon_Canvasplus.prototype.cnds.onShareAsyncFail, self);
-                        console.log(error);
-                    }
-                });
             }
         });
     };

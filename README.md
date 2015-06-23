@@ -34,10 +34,6 @@ The plugin is added by selecting the object "CocoonCanvasplus" from the "Object 
 
 This plugin will only work inside Canvas+ webview engine in Cocoon.io cloud compiler. 
 
-![Cocoon Canvas+ actions](images/canvasplus-actions.png)
-![Cocoon Canvas+ events](images/canvasplus-events.png)
-![Cocoon Canvas+ expressions](images/canvasplus-expressions.png)
-
 ## Installation
 
 ### Manual installation
