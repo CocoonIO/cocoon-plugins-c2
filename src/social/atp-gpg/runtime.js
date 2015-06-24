@@ -33,7 +33,7 @@ cr.plugins_.ATPGooglePlayGames = function(runtime) {
 
         this.GPG = null;
         this.GPGAvailable = false;
-        this.GPGClientID = this.properties[0];
+        //this.GPGClientID = this.properties[0];
 
         self = this;
 
@@ -41,7 +41,7 @@ cr.plugins_.ATPGooglePlayGames = function(runtime) {
             this.GPG = Cocoon.Social.GooglePlayGames;
             if (this.GPG) {
                 var config = {};
-                if (this.GPGClientID) config.clientId = this.GPGClientID;
+                //if (this.GPGClientID) config.clientId = this.GPGClientID;
                 this.GPG.init(config);
                 if (!!this.GPG.nativeAvailable) {
                     this.GPGInterface = this.GPG.getSocialInterface();

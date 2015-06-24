@@ -98,11 +98,12 @@ ACESDone();
  */
 
 var property_list = [
-    new cr.Property(ept_text,
+/**    new cr.Property(ept_text,
             "Google Play Games ClientID",
             "",
             "The ClientID for Google Play Games (only for iOs when using Google Play Games)",
             "")
+*/
 ];
 
 // Called by IDE when a new object type is to be created
