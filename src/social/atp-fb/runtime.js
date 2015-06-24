@@ -9,7 +9,7 @@ cr.plugins_.ATPFacebook = function(runtime) {
  * C2 plugin
  */
 (function() {
-    
+
     var requested_score = 0;
     var pluginProto = cr.plugins_.ATPFacebook.prototype;
     pluginProto.Type = function(plugin) {
@@ -34,7 +34,7 @@ cr.plugins_.ATPFacebook = function(runtime) {
         this.facebookChannel = this.properties[1];
 
         self = this;
-        
+
         this.startFacebook = function() {
             console.log("Facebook selected");
             this.facebookService = Cocoon.Social.Facebook;
@@ -61,7 +61,7 @@ cr.plugins_.ATPFacebook = function(runtime) {
 
     /**
      * Conditions
-     */       
+     */
     Cnds.prototype.onFacebookLoginSuccess = function() {
         return true;
     };
@@ -80,10 +80,10 @@ cr.plugins_.ATPFacebook = function(runtime) {
     Cnds.prototype.onPublishMessageWithDialogFail = function() {
         return true;
     };
-    
+
     /**
      * Leaderboards conditions
-     */    
+     */
     Cnds.prototype.onFacebookSubmitScoreSuccess = function() {
         return true;
     };
@@ -105,7 +105,7 @@ cr.plugins_.ATPFacebook = function(runtime) {
 
     /**
      * Achievements conditions
-     */    
+     */
     Cnds.prototype.onFacebookOpenAchievementsSuccess = function() {
         return true;
     };
@@ -126,7 +126,7 @@ cr.plugins_.ATPFacebook = function(runtime) {
     };
 
     pluginProto.cnds = new Cnds();
-    
+
     /**
      * Plugin actions
      */
@@ -147,7 +147,7 @@ cr.plugins_.ATPFacebook = function(runtime) {
                     console.log(JSON.stringify(error));
                     self.runtime.trigger(cr.plugins_.ATPFacebook.prototype.cnds.onFacebookLoginFail, self);
                 }
-            });     
+            });
         }
     };
     Acts.prototype.facebookRequestLogout = function() {
@@ -169,8 +169,7 @@ cr.plugins_.ATPFacebook = function(runtime) {
             if (error) {
                 console.error("Error publishing message: " + JSON.stringify(error));
                 self.runtime.trigger(cr.plugins_.ATPFacebook.prototype.cnds.onPublishMessageWithDialogFail, self);
-            }
-            else {
+            } else {
                 self.runtime.trigger(cr.plugins_.ATPFacebook.prototype.cnds.onPublishMessageWithDialogSuccess, self);
             }
         });
@@ -230,7 +229,7 @@ cr.plugins_.ATPFacebook = function(runtime) {
 
     /**
      * Achievements actions
-     */    
+     */
     Acts.prototype.facebookOpenAchievements = function() {
         if (!this.facebookServiceInterface) return;
         if (!this.facebookServiceInterface.isLoggedIn()) return;

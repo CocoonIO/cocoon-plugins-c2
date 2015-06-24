@@ -9,9 +9,11 @@ cr.plugins_.Cocoon_Canvasplus = function(runtime) {
  * C2 plugin
  */
 (function() {
+    var dialog = "";
     var input_text = "";
     var capture_screen_sync = "";
     var capture_screen_async = "";
+    var device_info = "";
 
     var pluginProto = cr.plugins_.Cocoon_Canvasplus.prototype;
     pluginProto.Type = function(plugin) {
@@ -108,28 +110,35 @@ cr.plugins_.Cocoon_Canvasplus = function(runtime) {
     Acts.prototype.openURL = function(url_) {
         Cocoon.App.openURL(url_);
     };
-
     Acts.prototype.exitApp = function() {
         Cocoon.App.exit();
     };
-
-    Acts.prototype.captureScreenSync = function(filename_, storage_, capture_, gallery_) {
+    Acts.prototype.pauseApp = function() {
+        Cocoon.App.pause();
+    };
+    Acts.prototype.resumeApp = function() {
+        Cocoon.App.resume();
+    };
+    Acts.prototype.captureScreenSync = function(filename_, storage_, capture_) {
         if (!this.runtime.isCocoonJs)
             return;
         var storage_type = ["APP_STORAGE", "INTERNAL_STORAGE", "EXTERNAL_STORAGE", "TEMPORARY_STORAGE"][storage_];
                   
-        var gallery = [true, false][gallery_];
+        // var gallery = [true, false][gallery_];
+
+        var gallery = false; 
 
         capture_screen_sync = Cocoon.Utils.captureScreen(filename_, storage_type, capture_, gallery);
     };
-
-    Acts.prototype.captureScreenAsync = function(filename_, storage_, capture_, gallery_) {
+    Acts.prototype.captureScreenAsync = function(filename_, storage_, capture_) {
         if (!this.runtime.isCocoonJs)
             return;
         
         var storage_type = ["APP_STORAGE", "INTERNAL_STORAGE", "EXTERNAL_STORAGE", "TEMPORARY_STORAGE"][storage_];
                   
-        var gallery = [true, false][gallery_];
+        // var gallery = [true, false][gallery_];
+
+        var gallery = false; 
         
         Cocoon.Utils.captureScreenAsync(filename_, storage_type, capture_, gallery, function(url, error) {
             if (error) {
@@ -140,13 +149,14 @@ cr.plugins_.Cocoon_Canvasplus = function(runtime) {
             }
         });
     };
-
-    Acts.prototype.captureScreenSyncShare = function(filename_, storage_, capture_, gallery_, text_) {
+    Acts.prototype.captureScreenSyncShare = function(filename_, storage_, capture_, text_) {
         if (!this.runtime.isCocoonJs)
             return;
         var storage_type = ["APP_STORAGE", "INTERNAL_STORAGE", "EXTERNAL_STORAGE", "TEMPORARY_STORAGE"][storage_];
                   
-        var gallery = [true, false][gallery_];
+        // var gallery = [true, false][gallery_];
+
+        var gallery = false;
         
         url = Cocoon.Utils.captureScreen(filename_, storage_type, capture_, gallery);
 
@@ -162,7 +172,19 @@ cr.plugins_.Cocoon_Canvasplus = function(runtime) {
             }
         });
     };
-
+    Acts.prototype.showWebdialog = function(url_){
+        dialog = new Cocoon.Widget.WebDialog();
+        dialog.show(url_, function(){
+            console.log("The user has closed the dialog!");
+            self.runtime.trigger(cr.plugins_.Cocoon_Canvasplus.prototype.cnds.onWebdialogUserClose, self);
+        });
+    };
+    Acts.prototype.closeWebdialog = function(){
+        dialog.close();
+    };
+    Acts.prototype.getDeviceInfo = function(){
+        device_info = Cocoon.Device.getDeviceInfo();
+    };
     pluginProto.acts = new Acts();
 
     /**
@@ -174,15 +196,30 @@ cr.plugins_.Cocoon_Canvasplus = function(runtime) {
     Exps.prototype.InputText = function(ret) {
         ret.set_string(input_text);
     };
-
     Exps.prototype.CaptureScreenSync = function(ret) {
         ret.set_string(capture_screen_sync);
     };
-
     Exps.prototype.CaptureScreenAsync = function(ret) {
         ret.set_string(capture_screen_async);
     };
-
+    Exps.prototype.DeviceOS = function(ret) {
+        ret.set_string(device_info.os);
+    };
+    Exps.prototype.DeviceVersion = function(ret) {
+        ret.set_string(device_info.version);
+    };
+    Exps.prototype.DeviceDPI = function(ret) {
+        ret.set_string(device_info.dpi);
+    };
+    Exps.prototype.DeviceBrand = function(ret) {
+        ret.set_string(device_info.brand);
+    };    
+    Exps.prototype.DeviceModel = function(ret) {
+        ret.set_string(device_info.model);
+    };
+    Exps.prototype.DevicePlatformId = function(ret) {
+        ret.set_string(device_info.platformId);
+    };    
     pluginProto.exps = new Exps();
 
 }());
