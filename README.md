@@ -161,10 +161,6 @@ If you are using the new Cocoon.io cloud compiler, select the plugin id from the
 
 No additional plugins are required after exportation unless the sharing methods are used. If so, please, install the [Native share plugin](#native-share-2). 
 
-## Important information to take into account 
-
-You can use these plugins in Cocoon.io cloud compiler or using the CLI. They won't work in the old compiler. 
-
 ### Social integration
 
 After the cordova exportation and the creation of the project, one of the following plugins are needed, depending on the Social Service you want to use. 
@@ -186,6 +182,9 @@ If you are using the new Cocoon.io cloud compiler, select the plugin id from the
 	cordova plugin add com.ludei.social.ios.facebook;
 	cordova plugin add com.ludei.social.android.facebook;
 ```
+## Important information to take into account 
+
+You can use these plugins in Cocoon.io cloud compiler or using the CLI. They won't work in the old compiler. 
 
 ## Need help?
 
