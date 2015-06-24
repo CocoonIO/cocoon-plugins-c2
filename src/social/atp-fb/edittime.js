@@ -18,58 +18,58 @@ function GetPluginSettings() {
  * Conditions
  */
 
-AddCondition(0, cf_trigger, "On login success", "Facebook", "On login succeeded", "Triggered when the user has logged into the social service.", "onFacebookLoginSuccess");
+AddCondition(0, cf_trigger, "On login success", "Social", "On login succeeded", "Triggered when the user has logged into the social service.", "onFacebookLoginSuccess");
 
-AddCondition(1, cf_trigger, "On login fail", "Facebook", "On login Failed", "Triggered if the login of the social service has failed.", "onFacebookLoginFail");
+AddCondition(1, cf_trigger, "On login fail", "Social", "On login Failed", "Triggered if the login of the social service has failed.", "onFacebookLoginFail");
 
-AddCondition(2, cf_trigger, "On logout success", "Facebook", "On logout succeeded", "Triggered when the user has logged out the social service.", "onFacebookLogoutSuccess");
+AddCondition(2, cf_trigger, "On logout success", "Social", "On logout succeeded", "Triggered when the user has logged out the social service.", "onFacebookLogoutSuccess");
 
-AddCondition(3, cf_trigger, "On logout fail", "Facebook", "On logout failed", "Triggered if the logout of the social service has failed.", "onFacebookLogoutFail");
+AddCondition(3, cf_trigger, "On logout fail", "Social", "On logout failed", "Triggered if the logout of the social service has failed.", "onFacebookLogoutFail");
 
-AddCondition(4, cf_trigger, "On publish message with dialog success", "Facebook", "On publish message with dialog success", "Triggered when the message has been successfully published", "onPublishMessageWithDialogSuccess");
+AddCondition(4, cf_trigger, "On publish message with dialog success", "Social", "On publish message with dialog success", "Triggered when the message has been successfully published", "onPublishMessageWithDialogSuccess");
 
-AddCondition(5, cf_trigger, "On publish message with dialog fail", "Facebook", "On publish message with dialog fail", "Triggered when the publishing has failed", "onPublishMessageWithDialogFail");
+AddCondition(5, cf_trigger, "On publish message with dialog fail", "Social", "On publish message with dialog fail", "Triggered when the publishing has failed", "onPublishMessageWithDialogFail");
 
 // Leaderboards
-AddCondition(6, cf_trigger, "On score submit success", "Facebook leaderboards", "On score submit success", "Triggered after submitting a score completes successfully", "onFacebookSubmitScoreSuccess");
+AddCondition(6, cf_trigger, "On score submit success", "Leaderboards", "On score submit success", "Triggered after submitting a score completes successfully", "onFacebookSubmitScoreSuccess");
 
-AddCondition(7, cf_trigger, "On score submit failed", "Facebook leaderboards", "On score submit fail", "Triggered after submitting a score fails to complete successfully.", "onFacebookSubmitScoreFail");
+AddCondition(7, cf_trigger, "On score submit failed", "Leaderboards", "On score submit fail", "Triggered after submitting a score fails to complete successfully.", "onFacebookSubmitScoreFail");
 
-AddCondition(8, cf_trigger, "On request score success", "Facebook leaderboards", "On request score success", "Triggered after requesting a score completes successfully.", "onFacebookRequestScoreSuccess");
+AddCondition(8, cf_trigger, "On request score success", "Leaderboards", "On request score success", "Triggered after requesting a score completes successfully.", "onFacebookRequestScoreSuccess");
 
-AddCondition(9, cf_trigger, "On request score failed", "Facebook leaderboards", "On request score fail", "Triggered after requesting a score fails to complete successfully.", "onFacebookRequestScoreFail");
+AddCondition(9, cf_trigger, "On request score failed", "Leaderboards", "On request score fail", "Triggered after requesting a score fails to complete successfully.", "onFacebookRequestScoreFail");
 
-AddCondition(10, cf_trigger, "On Leaderboard open", "Facebook leaderboards", "On Leaderboards view opened", "Triggered when the leaderboard view opens successfully.", "onFacebookOpenLeaderBoardSuccess");
+AddCondition(10, cf_trigger, "On Leaderboard open", "Leaderboards", "On Leaderboards view opened", "Triggered when the leaderboard view opens successfully.", "onFacebookOpenLeaderBoardSuccess");
 
-AddCondition(11, cf_trigger, "On Leaderboard closed", "Facebook leaderboards", "On Leaderboards view closed", "Triggered when the leaderboard view is closed by the user.", "onFacebookOpenLeaderBoardClosed");
+AddCondition(11, cf_trigger, "On Leaderboard closed", "Leaderboards", "On Leaderboards view closed", "Triggered when the leaderboard view is closed by the user.", "onFacebookOpenLeaderBoardClosed");
 
 // Achievements
-AddCondition(12, cf_trigger, "On Achievements view closed", "Facebook achievements", "On Achievements view closed", "Triggered when the Achievements view is closed by the user.", "onFacebookOpenAchievementsClosed");
+AddCondition(12, cf_trigger, "On Achievements view closed", "Achievements", "On Achievements view closed", "Triggered when the Achievements view is closed by the user.", "onFacebookOpenAchievementsClosed");
 
-AddCondition(13, cf_trigger, "On Achievements view open", "Facebook achievements", "On Achievements view open", "Triggered when the Achievements view is open by the user.", "onFacebookOpenAchievementsSuccess");
+AddCondition(13, cf_trigger, "On Achievements view open", "Achievements", "On Achievements view open", "Triggered when the Achievements view is open by the user.", "onFacebookOpenAchievementsSuccess");
 
-AddCondition(14, cf_trigger, "On reset achievements complete", "Facebook achievements", "On reset achievements completed", "Triggered when the achievements have been reset.", "onFacebookResetAchievementsComplete");
+AddCondition(14, cf_trigger, "On reset achievements complete", "Achievements", "On reset achievements completed", "Triggered when the achievements have been reset.", "onFacebookResetAchievementsComplete");
 
-AddCondition(15, cf_trigger, "On reset achievements fail", "Facebook achievements", "On reset achievements failed", "Triggered if something fails when trying to reset the achievements", "onFacebookResetAchievementsFail");
+AddCondition(15, cf_trigger, "On reset achievements fail", "Achievements", "On reset achievements failed", "Triggered if something fails when trying to reset the achievements", "onFacebookResetAchievementsFail");
 
-AddCondition(16, cf_trigger, "On submit achievement success", "Facebook achievements", "On submit achievement success", "Triggered when the achievement has been correctly.", "onFacebookSubmitAchievementComplete");
+AddCondition(16, cf_trigger, "On submit achievement success", "Achievements", "On submit achievement success", "Triggered when the achievement has been correctly.", "onFacebookSubmitAchievementComplete");
 
-AddCondition(17, cf_trigger, "On submit achievement fail", "Facebook achievements", "On submit achievement failed", "Triggered if something fails when trying to submit an achievement", "onFacebookSubmitAchievementFail");
+AddCondition(17, cf_trigger, "On submit achievement fail", "Achievements", "On submit achievement failed", "Triggered if something fails when trying to submit an achievement", "onFacebookSubmitAchievementFail");
 
 /**
  * Actions
  */
 
-AddAction(0, af_none, "Request login", "Facebook", "Request Facebook login", "", "facebookRequestLogin");
+AddAction(0, af_none, "Request login", "Social", "Request Facebook login", "", "facebookRequestLogin");
 
-AddAction(1, af_none, "Request logout", "Facebook", "Request Facebook logout", "", "facebookRequestLogout");
+AddAction(1, af_none, "Request logout", "Social", "Request Facebook logout", "", "facebookRequestLogout");
 
 AddStringParam("Message", "The message to be published.");
 AddStringParam("Media URL", "An URL to a media (image, video, ...).");
 AddStringParam("Link URL", "An URL to add to the message so the user can click on that link to get more information.");
 AddStringParam("Link Text", "The text that will appear in the message link.");
 AddStringParam("Link Caption", "The text caption that will appear in the message link.");
-AddAction(2, af_none, "Publish message with dialog", "Facebook", "Publish message with dialog", "Publishes a message with dialog in Facebook", "publishMessageWithDialog");
+AddAction(2, af_none, "Publish message with dialog", "Social", "Publish message with dialog", "Publishes a message with dialog in Facebook", "publishMessageWithDialog");
 
 // Leaderboards
 AddNumberParam("Score", "The score to submit to Game Center.");
