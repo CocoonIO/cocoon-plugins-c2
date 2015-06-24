@@ -1,7 +1,7 @@
 Atomic Plugins for Construct 2
 ==================
 
-This plugins can be used in Construct 2. It requires a cordova exportation. 
+These plugins can be used in Construct 2. They require a cordova exportation. 
 
 ## Configuration
 
@@ -20,6 +20,51 @@ The plugin is added by selecting the object "ATPInApps" from the "Object types" 
 ![InApps actions](images/inapps-actions.png)
 ![InApps events](images/inapps-events.png)
 ![InApps expressions](images/inapps-expressions.png)
+
+### Native Share
+
+The plugin is added by selecting the object "ATPShare" from the "Object types" list inside Construct 2.
+
+![Native Share actions](images/share-actions.png)
+![Native Share events](images/share-events.png)
+
+### Cocoon Canvas+
+
+The plugin is added by selecting the object "CocoonCanvasplus" from the "Object types" list inside Construct 2.
+
+This plugin will only work inside Canvas+ webview engine in Cocoon.io cloud compiler. 
+
+![Cocoon Canvas+ actions](images/canvasplus-actions.png)
+![Cocoon Canvas+ events](images/canvasplus-events.png)
+![Cocoon Canvas+ expressions](images/canvasplus-expressions.png)
+
+### Social integration 
+
+This plugin is divided in three different parts, one of each social service available. 
+
+#### Game Center
+
+The plugin is added by selecting the object "ATPGameCenter" from the "Object types" list inside Construct 2.
+
+![Game Center actions](images/gc-actions.png)
+![Game Center events](images/gc-events.png)
+![Game Center expressions](images/gc-expressions.png)
+
+#### Google Play Games
+
+The plugin is added by selecting the object "ATPGooglePlayGames" from the "Object types" list inside Construct 2.
+
+![Google Play Games actions](images/gpg-actions.png)
+![Google Play Games events](images/gpg-events.png)
+![Google Play Games expressions](images/gpg-expressions.png)
+
+#### Facebook 
+
+The plugin is added by selecting the object "ATPFacebook" from the "Object types" list inside Construct 2.
+
+![Facebook actions](images/fb-actions.png)
+![Facebook events](images/fb-events.png)
+![Facebook expressions](images/fb-expressions.png)
 
 ## Installation
 
@@ -100,6 +145,43 @@ If you are using the new Cocoon.io cloud compiler, select the plugin id from the
 ```
 	cordova plugin add com.ludei.inapps.ios.appstore;
 ```
+
+### Native Share
+
+After the cordova exportation and the creation of the project, it is required to install the following plugin for cordova. 
+
+If you are using the CLI, copy and paste the command for installing the plugin in your project. 
+
+If you are using the new Cocoon.io cloud compiler, select the plugin id from the plugin list in the project configuration and the plugin will be intalled automatically. 
+
+```
+	cordova plugin add com.ludei.share;
+```
+### Cocoon Canvas+
+
+No additional plugins are required after exportation unless the sharing methods are used. If so, please, install the [Native share plugin](#native-share-2). 
+
+### Social integration
+
+After the cordova exportation and the creation of the project, one of the following plugins are needed, depending on the Social Service you want to use. 
+
+If you are using the CLI, copy and paste the command for installing the plugin in your project. 
+
+If you are using the new Cocoon.io cloud compiler, select the plugin id from the plugin list in the project configuration and the plugin will be intalled automatically. 
+
+#### Game Center
+```
+	cordova plugin add com.ludei.social.ios.gamecenter;
+```
+#### Google Play Games
+```
+	cordova plugin add con.ludei.social.android.googleplaygames;
+```
+#### Facebook
+```
+	cordova plugin add com.ludei.social.ios.facebook;
+	cordova plugin add com.ludei.social.android.facebook;
+```
 ## Important information to take into account 
 
 You can use these plugins in Cocoon.io cloud compiler or using the CLI. They won't work in the old compiler. 
@@ -109,6 +191,14 @@ You can use these plugins in Cocoon.io cloud compiler or using the CLI. They won
 Visit [our help center](https://support.ludei.com).
 
 ## Changelog
+
+### Jun 24, 2015
+* Atomic plugins for Social integration added (Game Center and Google Play Games).
+* Webdialog, Device, App and Utils method added in Cocoon Canvas+ plugin. 
+
+### Jun 22, 2015
+* Atomic plugins for Native share added. 
+* Cocoon Canvas+ legacies added (Keyboard, open URL, exit, confirm, capture screen,...). 
 
 ### May 28, 2015
 * Common folder removed, no longer required. 
@@ -131,4 +221,13 @@ Visit [our help center](https://support.ludei.com).
 ### Mar 06, 2015
 * Atomic Plugins for Ads added. 
 * Supported Ad Services: Mopub and Admob. 
+
+# License
+
+Mozilla Public License, version 2.0
+
+Copyright (c) 2015 Ludei 
+
+See [`MPL 2.0 License`](LICENSE)
+
 
