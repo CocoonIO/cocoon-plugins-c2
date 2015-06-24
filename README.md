@@ -60,11 +60,7 @@ The plugin is added by selecting the object "ATPGooglePlayGames" from the "Objec
 
 #### Facebook 
 
-The plugin is added by selecting the object "ATPFacebook" from the "Object types" list inside Construct 2.
-
-![Facebook actions](images/fb-actions.png)
-![Facebook events](images/fb-events.png)
-![Facebook expressions](images/fb-expressions.png)
+Work in progress
 
 ## Installation
 
@@ -178,10 +174,9 @@ If you are using the new Cocoon.io cloud compiler, select the plugin id from the
 	cordova plugin add con.ludei.social.android.googleplaygames;
 ```
 #### Facebook
-```
-	cordova plugin add com.ludei.social.ios.facebook;
-	cordova plugin add com.ludei.social.android.facebook;
-```
+
+Work in progress.
+
 ## Important information to take into account 
 
 You can use these plugins in Cocoon.io cloud compiler or using the CLI. They won't work in the old compiler. 
