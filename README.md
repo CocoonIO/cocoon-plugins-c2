@@ -34,6 +34,10 @@ The plugin is added by selecting the object "CocoonCanvasplus" from the "Object 
 
 This plugin will only work inside Canvas+ webview engine in Cocoon.io cloud compiler. 
 
+![Cocoon Canvas+ actions](images/canvasplus-actions.png)
+![Cocoon Canvas+ events](images/canvasplus-events.png)
+![Cocoon Canvas+ expressions](images/canvasplus-expressions.png)
+
 ### Social integration 
 
 This plugin is divided in three different parts, one of each social service available. 
@@ -42,13 +46,25 @@ This plugin is divided in three different parts, one of each social service avai
 
 The plugin is added by selecting the object "ATPGameCenter" from the "Object types" list inside Construct 2.
 
+![Game Center actions](images/gc-actions.png)
+![Game Center events](images/gc-events.png)
+![Game Center expressions](images/gc-expressions.png)
+
 #### Google Play Games
 
 The plugin is added by selecting the object "ATPGooglePlayGames" from the "Object types" list inside Construct 2.
 
+![Google Play Games actions](images/gpg-actions.png)
+![Google Play Games events](images/gpg-events.png)
+![Google Play Games expressions](images/gpg-expressions.png)
+
 #### Facebook 
 
 The plugin is added by selecting the object "ATPFacebook" from the "Object types" list inside Construct 2.
+
+![Facebook actions](images/fb-actions.png)
+![Facebook events](images/fb-events.png)
+![Facebook expressions](images/fb-expressions.png)
 
 ## Installation
 
