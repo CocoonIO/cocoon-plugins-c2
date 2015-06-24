@@ -34,6 +34,22 @@ The plugin is added by selecting the object "CocoonCanvasplus" from the "Object 
 
 This plugin will only work inside Canvas+ webview engine in Cocoon.io cloud compiler. 
 
+### Social integration 
+
+This plugin is divided in three different parts, one of each social service available. 
+
+#### Game Center
+
+The plugin is added by selecting the object "ATPGameCenter" from the "Object types" list inside Construct 2.
+
+#### Google Play Games
+
+The plugin is added by selecting the object "ATPGooglePlayGames" from the "Object types" list inside Construct 2.
+
+#### Facebook 
+
+The plugin is added by selecting the object "ATPFacebook" from the "Object types" list inside Construct 2.
+
 ## Installation
 
 ### Manual installation
@@ -133,11 +149,37 @@ No additional plugins are required after exportation unless the sharing methods 
 
 You can use these plugins in Cocoon.io cloud compiler or using the CLI. They won't work in the old compiler. 
 
+### Social integration
+
+After the cordova exportation and the creation of the project, one of the following plugins are needed, depending on the Social Service you want to use. 
+
+If you are using the CLI, copy and paste the command for installing the plugin in your project. 
+
+If you are using the new Cocoon.io cloud compiler, select the plugin id from the plugin list in the project configuration and the plugin will be intalled automatically. 
+
+#### Game Center
+```
+	cordova plugin add com.ludei.social.ios.gamecenter;
+```
+#### Google Play Games
+```
+	cordova plugin add con.ludei.social.android.googleplaygames;
+```
+#### Facebook
+```
+	cordova plugin add com.ludei.social.ios.facebook;
+	cordova plugin add com.ludei.social.android.facebook;
+```
+
 ## Need help?
 
 Visit [our help center](https://support.ludei.com).
 
 ## Changelog
+
+### Jun 24, 2015
+* Atomic plugins for Social integration added (Game Center and Google Play Games).
+* Webdialog, Device, App and Utils method added in Cocoon Canvas+ plugin. 
 
 ### Jun 22, 2015
 * Atomic plugins for Native share added. 
@@ -165,7 +207,7 @@ Visit [our help center](https://support.ludei.com).
 * Atomic Plugins for Ads added. 
 * Supported Ad Services: Mopub and Admob. 
 
-#License
+# License
 
 Mozilla Public License, version 2.0
 
