@@ -141,7 +141,6 @@ If you are using the new Cocoon.io cloud compiler, select the plugin id from the
 ```
 	cordova plugin add com.ludei.inapps.ios.appstore;
 ```
-
 ### Native Share
 
 After the cordova exportation and the creation of the project, it is required to install the following plugin for cordova. 
@@ -171,8 +170,12 @@ If you are using the new Cocoon.io cloud compiler, select the plugin id from the
 ```
 #### Google Play Games
 ```
-	cordova plugin add con.ludei.social.android.googleplaygames;
+	cordova plugin add con.ludei.social.android.googleplaygames --variable APP_ID=the_app_id;
 ```
+As you can see, an additional parameter is required: 
+
+* **APP_ID:** The id provided by google play games. 
+
 #### Facebook
 
 Work in progress.
