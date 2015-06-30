@@ -1,7 +1,15 @@
 Atomic Plugins for Construct 2
 ==================
 
-These plugins can be used in Construct 2. They require a cordova exportation. 
+These plugins for Construct 2 are adapted from the [Atomic Plugins](http://atomic-plugins.com/) for Cordova. They can be used in Construct 2, **but they can't be tested** on it. They require an **exportation for cordova** and aditional [plugin installations](#adding-the-plugins-to-a-project-after-exportation). 
+
+* [Configuration](#configuration)
+* [Installation](#installation)
+* [Adding the plugins to a project after exportation](#adding-the-plugins-to-a-project-after-exportation)
+* [Important information to take into account](#important-information-to-take-into-account)
+* [Need help?](#need-help)
+* [Changelog](#changelog)
+* [License](#license) 
 
 ## Configuration
 
@@ -182,7 +190,7 @@ Work in progress.
 
 ## Important information to take into account 
 
-You can use these plugins in Cocoon.io cloud compiler or using the CLI. They won't work in the old compiler. 
+You can use these plugins in Cocoon.io cloud compiler or using the CLI. They won't work in the old compiler or inside Construct2 without exportation. 
 
 ## Need help?
 
