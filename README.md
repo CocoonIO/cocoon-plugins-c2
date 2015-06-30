@@ -3,9 +3,21 @@ Atomic Plugins for Construct 2
 
 These plugins for Construct 2 are adapted from the [Atomic Plugins](http://atomic-plugins.com/) for Cordova. They can be used in Construct 2, **but they can't be tested** on it. They require an **exportation for cordova** and aditional [plugin installations](#adding-the-plugins-to-a-project-after-exportation). 
 
+## Content
+
 * [Configuration](#configuration)
+	* [Ads](#ads)
+	* [InApps](#inapps)
+	* [Native share](#native-share)
+	* [Cocoon Canvas+](#cocoon-canvas)
+	* [Social integration](#social-integration)
 * [Installation](#installation)
-* [Adding the plugins to a project after exportation](#adding-the-plugins-to-a-project-after-exportation)
+* [Adding a plugin to a project after exportation](#adding-the-plugins-to-a-project-after-exportation)
+	* [Ads](#ads-1)
+	* [InApps](#in-app-purchases)
+	* [Native share](#native-share-1)
+	* [Cocoon Canvas+](cocoon-canvas-1)
+	* [Social integration](#social-integration-1)
 * [Important information to take into account](#important-information-to-take-into-account)
 * [Need help?](#need-help)
 * [Changelog](#changelog)
