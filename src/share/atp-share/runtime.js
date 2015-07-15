@@ -29,6 +29,12 @@ cr.plugins_.ATPShare = function(runtime) {
     var self;
 
     instanceProto.onCreate = function() {
+
+        if (!(this.runtime.isAndroid || this.runtime.isiOS))
+            return;
+        if (typeof Cocoon == 'undefined')
+            return;
+        
         self = this;
     };
 

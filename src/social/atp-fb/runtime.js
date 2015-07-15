@@ -30,6 +30,12 @@ cr.plugins_.ATPFacebook = function(runtime) {
     var self;
 
     instanceProto.onCreate = function() {
+
+        if (!(this.runtime.isAndroid || this.runtime.isiOS))
+            return;
+        if (typeof Cocoon == 'undefined')
+            return;
+
         this.facebookAppID = this.properties[0];
         this.facebookChannel = this.properties[1];
 

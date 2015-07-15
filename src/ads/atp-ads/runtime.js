@@ -31,6 +31,12 @@ cr.plugins_.ATPAds = function(runtime) {
         var self;
         
         instanceProto.onCreate = function() {
+
+                if (!(this.runtime.isAndroid || this.runtime.isiOS))
+                    return;
+                if (typeof Cocoon == 'undefined')
+                    return;
+
                 this.isShowingBanner = false;
                 this.isShowingInterstitial = false;
 

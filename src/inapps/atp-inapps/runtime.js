@@ -37,6 +37,11 @@ cr.plugins_.ATPInApps = function(runtime) {
         
         instanceProto.onCreate = function() {
             
+            if (!(this.runtime.isAndroid || this.runtime.isiOS))
+                return;
+            if (typeof Cocoon == 'undefined')
+                return;  
+
             this.storeService = Cocoon.InApp;
            
             this.triggerProduct = "";

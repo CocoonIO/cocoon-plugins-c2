@@ -30,6 +30,11 @@ cr.plugins_.ATPGameCenter = function(runtime) {
 
     instanceProto.onCreate = function() {
 
+        if (!(this.runtime.isAndroid || this.runtime.isiOS))
+            return;
+        if (typeof Cocoon == 'undefined')
+            return;
+
         this.GC = null;
         this.GCAvailable = false;
         this.GCClientID = this.properties[0];

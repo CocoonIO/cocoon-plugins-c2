@@ -31,6 +31,11 @@ cr.plugins_.ATPGooglePlayGames = function(runtime) {
 
     instanceProto.onCreate = function() {
 
+        if (!(this.runtime.isAndroid || this.runtime.isiOS))
+            return;
+        if (typeof Cocoon == 'undefined')
+            return;
+
         this.GPG = null;
         this.GPGAvailable = false;
         //this.GPGClientID = this.properties[0];
