@@ -210,6 +210,9 @@ Visit [our help center](https://support.ludei.com).
 
 ## Changelog
 
+### Jul 15, 2015
+* Fix for the preview added. 
+
 ### Jun 24, 2015
 * Atomic plugins for Social integration added (Game Center and Google Play Games).
 * Webdialog, Device, App and Utils method added in Cocoon Canvas+ plugin. 
