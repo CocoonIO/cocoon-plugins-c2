@@ -1,11 +1,11 @@
 function GetPluginSettings() {
     return {
-        "name": "ATP GameCenter",
+        "name": "Cocoon GameCenter",
         "id": "ATPGameCenter",
         "version": "1.0",
-        "description": "Atomic Plugins for Game Center",
+        "description": "Cocoon plugin for Game Center",
         "author": "Ludei",
-        "help url": "http://www.ludei.com",
+        "help url": "http://cocoon.io",
         "category": "Platform specific",
         "type": "object", // not in layout
         "rotatable": false,

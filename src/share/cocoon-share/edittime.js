@@ -1,11 +1,11 @@
 function GetPluginSettings() {
     return {
-        "name": "ATP Share",
+        "name": "Cocoon Share",
         "id": "ATPShare",
         "version": "1.0",
-        "description": "Atomic Plugins Share",
+        "description": "Cocoon plugin for Share",
         "author": "Ludei",
-        "help url": "http://www.ludei.com",
+        "help url": "http://cocoon.io",
         "category": "Platform specific",
         "type": "object", // not in layout
         "rotatable": false,

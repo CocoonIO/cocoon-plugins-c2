@@ -1,5 +1,5 @@
-Atomic Plugins for Construct 2
-==================
+Cocoon plugins for Construct 2
+===============================
 
 These plugins for Construct 2 are adapted from the [Atomic Plugins](http://atomic-plugins.com/) for Cordova. They can be used in Construct 2, **but they can't be tested** on it. They require an **exportation for cordova** and aditional [plugin installations](#adding-the-plugins-to-a-project-after-exportation). 
 
@@ -27,7 +27,7 @@ These plugins for Construct 2 are adapted from the [Atomic Plugins](http://atomi
 
 ### Ads
 
-The plugin can be configured by selecting the object "ATPAds" from the "Object types" list inside Construct 2.
+The plugin can be configured by selecting the object "Cocoon Ads" from the "Object types" list inside Construct 2.
 
 ![Ads actions](images/ads-actions.png)
 ![Ads events](images/ads-events.png)
@@ -35,7 +35,7 @@ The plugin can be configured by selecting the object "ATPAds" from the "Object t
 
 ### InApps
 
-The plugin is added by selecting the object "ATPInApps" from the "Object types" list inside Construct 2.
+The plugin is added by selecting the object "Cocoon InApps" from the "Object types" list inside Construct 2.
 
 ![InApps actions](images/inapps-actions.png)
 ![InApps events](images/inapps-events.png)
@@ -43,14 +43,14 @@ The plugin is added by selecting the object "ATPInApps" from the "Object types" 
 
 ### Native Share
 
-The plugin is added by selecting the object "ATPShare" from the "Object types" list inside Construct 2.
+The plugin is added by selecting the object "Cocoon Share" from the "Object types" list inside Construct 2.
 
 ![Native Share actions](images/share-actions.png)
 ![Native Share events](images/share-events.png)
 
 ### Cocoon Canvas+
 
-The plugin is added by selecting the object "CocoonCanvasplus" from the "Object types" list inside Construct 2.
+The plugin is added by selecting the object "Cocoon CanvasPlus" from the "Object types" list inside Construct 2.
 
 This plugin will only work inside Canvas+ webview engine in Cocoon.io cloud compiler. 
 
@@ -64,7 +64,7 @@ This plugin is divided in three different parts, one of each social service avai
 
 #### Game Center
 
-The plugin is added by selecting the object "ATPGameCenter" from the "Object types" list inside Construct 2.
+The plugin is added by selecting the object "Cocoon GameCenter" from the "Object types" list inside Construct 2.
 
 ![Game Center actions](images/gc-actions.png)
 ![Game Center events](images/gc-events.png)
@@ -72,7 +72,7 @@ The plugin is added by selecting the object "ATPGameCenter" from the "Object typ
 
 #### Google Play Games
 
-The plugin is added by selecting the object "ATPGooglePlayGames" from the "Object types" list inside Construct 2.
+The plugin is added by selecting the object "Cocoon GooglePlayGames" from the "Object types" list inside Construct 2.
 
 ![Google Play Games actions](images/gpg-actions.png)
 ![Google Play Games events](images/gpg-events.png)
@@ -87,8 +87,8 @@ Work in progress
 ### Manual installation
 
 * **Close Construct 2**
-* Checkout the 'master' branch from this repository. You will see several folders, one called "common" and one more for each of the available plugins. Currently there is only one for Ads. 
-* Copy the folder which is inside the name of the plugin. They will always start by "atp". For example, inside "ads" there is one called "atp-ads". 
+* Checkout the 'master' branch from this repository. You will see several folders, one called "common" and one more for each of the available plugins.  
+* Copy the folder which is inside the name of the plugin. They will always start by "cocoon". For example, inside "ads" there is one called "cocoon-ads". 
 * Paste the whole folder into *_CONSTRUCT_2_INSTALLATION_FOLDER_*\exporters\html5\plugins.
 
 And that's all! You can open Contruct2 to start using them! 
@@ -107,38 +107,38 @@ If you are using the new Cocoon.io cloud compiler, select the plugin id from the
 
 * Android
 ```
-	cordova plugin add com.ludei.ads.android.admob;
+	cordova plugin add cocoon-plugin-ads-android-admob;
 ```
 * iOS
 ```
-	cordova plugin add com.ludei.ads.ios.admob; 
+	cordova plugin add cocoon-plugin-ads-ios-admob; 
 ```
 #### Mopub
 * Android
 ```
-	cordova plugin add com.ludei.ads.android.mopub;
+	cordova plugin add cocoon-plugin-ads-android-mopub;
 ```
 * iOS
 ```
-	cordova plugin add com.ludei.ads.ios.mopub;
+	cordova plugin add cocoon-plugin-ads-ios-mopub;
 ```
 In addition, there are optional MoPub adapters for iOS and Android.
 
 * Android
 ```
-	cordova plugin add con.ludei.ads.android.adcolony;
-	cordova plugin add con.ludei.ads.android.admob;
-	cordova plugin add con.ludei.ads.android.charboost;
-	cordova plugin add con.ludei.ads.android.greystripe;
-	cordova plugin add con.ludei.ads.android.inmobi;
-	cordova plugin add con.ludei.ads.android.millennial;
+	cordova plugin add cocoon-plugin-ads-android-adcolony;
+	cordova plugin add cocoon-plugin-ads-android-admob;
+	cordova plugin add cocoon-plugin-ads-android-charboost;
+	cordova plugin add cocoon-plugin-ads-android-greystripe;
+	cordova plugin add cocoon-plugin-ads-android-inmobi;
+	cordova plugin add cocoon-plugin-ads-android-millennial;
 ```
 * iOS 
 ```
-	cordova plugin add con.ludei.ads.android.adcolony; // new 
-	cordova plugin add com.ludei.ads.ios.mopub.admob;
-	cordova plugin add com.ludei.ads.ios.mopub.charboost;
-	cordova plugin add com.ludei.ads.ios.mopub.millennial;
+	cordova plugin add cocoon-plugin-ads-android-adcolony; 
+	cordova plugin add cocoon-plugin-ads-ios-mopub-admob;
+	cordova plugin add cocoon-plugin-ads-ios-mopub-charboost;
+	cordova plugin add cocoon-plugin-ads-ios-mopub-millennial;
 ```
 
 ### In-App Purchases
@@ -151,15 +151,15 @@ If you are using the new Cocoon.io cloud compiler, select the plugin id from the
 
 #### Google Play 
 ```
-	cordova plugin add com.ludei.inapps.android.googleplay;
+	cordova plugin add cocoon-plugin-inapps-android-googleplay;
 ```
 #### Amazon App Store 
 ```
-	cordova plugin add con.ludei.inapps.android.amazon;
+	cordova plugin add cocoon-plugin-inapps-android-amazon;
 ```
 #### Apple App Store
 ```
-	cordova plugin add com.ludei.inapps.ios.appstore;
+	cordova plugin add cocoon-plugin-inapps-ios-appstore;
 ```
 ### Native Share
 
@@ -170,7 +170,7 @@ If you are using the CLI, copy and paste the command for installing the plugin i
 If you are using the new Cocoon.io cloud compiler, select the plugin id from the plugin list in the project configuration and the plugin will be intalled automatically. 
 
 ```
-	cordova plugin add com.ludei.share;
+	cordova plugin add cocoon-plugin-share;
 ```
 ### Cocoon Canvas+
 
@@ -186,11 +186,11 @@ If you are using the new Cocoon.io cloud compiler, select the plugin id from the
 
 #### Game Center
 ```
-	cordova plugin add com.ludei.social.ios.gamecenter;
+	cordova plugin add cocoon-plugin-social-ios-gamecenter;
 ```
 #### Google Play Games
 ```
-	cordova plugin add con.ludei.social.android.googleplaygames --variable APP_ID=the_app_id;
+	cordova plugin add cocoon-plugin-social-android-googleplaygames --variable APP_ID=the_app_id;
 ```
 As you can see, an additional parameter is required: 
 
@@ -209,6 +209,9 @@ You can use these plugins in Cocoon.io cloud compiler or using the CLI. They won
 Visit [our help center](https://support.ludei.com).
 
 ## Changelog
+
+### Jul 17, 2015
+* Plugins renamed to "Cocoon". 
 
 ### Jul 15, 2015
 * Fix for the preview added. 

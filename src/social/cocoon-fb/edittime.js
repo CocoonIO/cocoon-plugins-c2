@@ -1,9 +1,9 @@
 function GetPluginSettings() {
     return {
-        "name": "ATP Facebook",
+        "name": "Cocoon Facebook",
         "id": "ATPFacebook",
         "version": "1.0",
-        "description": "Atomic Plugins for Facebook",
+        "description": "Cocoon plugin for Facebook",
         "author": "Ludei",
         "help url": "http://cocoon.io",
         "category": "Platform specific",

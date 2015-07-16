@@ -1,11 +1,11 @@
 function GetPluginSettings() {
     return {
-        "name": "ATP InApps",
+        "name": "Cocoon InApps",
         "id": "ATPInApps",
         "version": "1.0",
-        "description": "Atomic Plugins for In-App Purchases",
+        "description": "Cocoon plugin for In-App Purchases",
         "author": "Ludei",
-        "help url": "http://www.ludei.com",
+        "help url": "http://cocoon.io",
         "category": "Platform specific",
         "type": "object", // not in layout
         "rotatable": false,

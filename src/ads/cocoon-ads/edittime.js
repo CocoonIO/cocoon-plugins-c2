@@ -1,11 +1,11 @@
 function GetPluginSettings() {
     return {
-        "name": "ATP Ads",
+        "name": "Cocoon Ads",
         "id": "ATPAds",
         "version": "1.0",
-        "description": "Atomic Plugins for Ads",
+        "description": "Cocoon plugin for Ads",
         "author": "Ludei",
-        "help url": "http://www.ludei.com",
+        "help url": "http://cocoon.io",
         "category": "Platform specific",
         "type": "object", // not in layout
         "rotatable": false,

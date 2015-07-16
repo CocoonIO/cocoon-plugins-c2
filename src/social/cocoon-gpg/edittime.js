@@ -1,11 +1,11 @@
 function GetPluginSettings() {
     return {
-        "name": "ATP GooglePlayGames",
+        "name": "Cocoon GooglePlayGames",
         "id": "ATPGooglePlayGames",
         "version": "1.0",
-        "description": "Atomic Plugins for Google Play Games",
+        "description": "Cocoon plugin for Google Play Games",
         "author": "Ludei",
-        "help url": "http://www.ludei.com",
+        "help url": "http://cocoon.io",
         "category": "Platform specific",
         "type": "object", // not in layout
         "rotatable": false,
