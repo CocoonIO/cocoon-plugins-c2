@@ -65,10 +65,10 @@ cr.plugins_.ATPGooglePlayGames = function(runtime) {
     /**
      * Conditions
      */
-    Cnds.prototype.onGPGGPGGPGLoginSuccess = function() {
+    Cnds.prototype.onGPGLoginSuccess = function() {
         return true;
     };
-    Cnds.prototype.onGPGGPGLoginFail = function() {
+    Cnds.prototype.onGPGLoginFail = function() {
         return true;
     };
     Cnds.prototype.onGPGLogoutSuccess = function() {
