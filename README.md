@@ -210,6 +210,10 @@ Visit [our help center](https://support.ludei.com).
 
 ## Changelog
 
+### Jul 24, 2015
+* UserID, UserName and UserImage expressions added to Google Play Games.
+* RequestImage action added to Google Play Games. It is necessary to call it first for using the UserImage expression. 
+
 ### Jul 17, 2015
 * Plugins renamed to "Cocoon". 
 

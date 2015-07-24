@@ -47,9 +47,14 @@ AddCondition(13, cf_trigger, "On reset achievements complete", "Achievements", "
 
 AddCondition(14, cf_trigger, "On reset achievements fail", "Achievements", "On reset achievements failed", "Triggered if something fails when trying to reset the achievements", "onGPGResetAchievementsFail");
 
-AddCondition(15, cf_trigger, "On submit achievement success", "Achievements", "On submit achievement success", "Triggered when the achievement has been correctly.", "onGPGSubmitAchievementComplete");
+AddCondition(15, cf_trigger, "On submit achievement success", "Achievements", "On submit achievement success", "Triggered when the achievement has been submitted correctly.", "onGPGSubmitAchievementComplete");
 
 AddCondition(16, cf_trigger, "On submit achievement fail", "Achievements", "On submit achievement failed", "Triggered if something fails when trying to submit an achievement", "onGPGSubmitAchievementFail");
+
+// User information
+AddCondition(17, cf_trigger, "On request user image success", "User data", "On request user image success", "Triggered when the image request has completed correctly.", "onGPGRequestUserImageComplete");
+
+AddCondition(18, cf_trigger, "On request user image fail", "User data", "On request user image failed", "Triggered if something fails when trying to request the image", "onGPGRequestUserImageFail");
 
 /**
  * Actions
@@ -81,15 +86,26 @@ AddAction(7, af_none, "Reset Achievements", "Achievements", "Reset Achievements"
 AddStringParam("Achievement ID", "The ID of the achievement to be sent");
 AddAction(8, af_none, "Submit Achievement", "Achievements", "Submit Achievement", "Submits an achievement", "GPGSubmitAchievement");
 
-//AddAction(9, af_none, "Request Achievements", "Achievements", "Reset Achievements", "Resets the achievements", "GPGRequestAchievements");
-
-//AddAction(10, af_none, "Request All Achievements", "Achievements", "Reset Achievements", "Resets the achievements", "GPGRequestAllAchievements");
+AddComboParamOption("THUMB");
+AddComboParamOption("SMALL");
+AddComboParamOption("MEDIUM");
+AddComboParamOption("LARGE");
+AddComboParam("Image size", "The size of the image to request.");
+AddAction(8, af_none, "Request image", "User data", "Request image", "Request the user image", "GPGRequestUserImage");
 
 /**
  * Expressions
  */
 
 AddExpression(0, ef_return_string, "", "Leaderboards", "PlayerScore", "Returns the current player score.");
+
+// User data
+AddExpression(0, ef_return_string, "", "User data", "UserID", "Returns the current user id.");
+
+AddExpression(0, ef_return_string, "", "User data", "UserName", "Returns the current user name.");
+
+AddExpression(0, ef_return_string, "", "User data", "UsarImage", "Returns the current user image. It is necessary to request it first.");
+
 
 ACESDone();
 
