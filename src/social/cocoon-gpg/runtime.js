@@ -234,7 +234,7 @@ cr.plugins_.ATPGooglePlayGames = function(runtime) {
     Acts.prototype.GPGOpenAchievements = function() {
         if (!this.GPGInterface) return;
         if (!this.GPGInterface.isLoggedIn()) return;
-        self.runtime.trigger(cr.plugins_.CJSAds.prototype.cnds.onGPGOpenAchievementsSuccess, self);
+        self.runtime.trigger(cr.plugins_.ATPGooglePlayGames.prototype.cnds.onGPGOpenAchievementsSuccess, self);
         this.GPGInterface.showAchievements(function(err) {
             if (err) {
                 console.log(JSON.stringify(error));
