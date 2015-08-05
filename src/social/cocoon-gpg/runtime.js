@@ -11,6 +11,10 @@ cr.plugins_.ATPGooglePlayGames = function(runtime) {
 (function() {
 
     var requested_score = 0;
+    var user_id = ""; 
+    var user_name = "";
+    var user_image = ""; 
+
     var pluginProto = cr.plugins_.ATPGooglePlayGames.prototype;
     pluginProto.Type = function(plugin) {
         this.plugin = plugin;
@@ -65,10 +69,10 @@ cr.plugins_.ATPGooglePlayGames = function(runtime) {
     /**
      * Conditions
      */
-    Cnds.prototype.onGPGGPGGPGLoginSuccess = function() {
+    Cnds.prototype.onGPGLoginSuccess = function() {
         return true;
     };
-    Cnds.prototype.onGPGGPGLoginFail = function() {
+    Cnds.prototype.onGPGLoginFail = function() {
         return true;
     };
     Cnds.prototype.onGPGLogoutSuccess = function() {
@@ -121,6 +125,12 @@ cr.plugins_.ATPGooglePlayGames = function(runtime) {
     Cnds.prototype.onGPGSubmitAchievementFail = function() {
         return true;
     };
+    Cnds.prototype.onGPGRequestUserImageComplete = function() {
+        return true;
+    };
+    Cnds.prototype.onGPGRequestUserImageFail = function() {
+        return true;
+    };
 
     pluginProto.cnds = new Cnds();
     /**
@@ -140,6 +150,12 @@ cr.plugins_.ATPGooglePlayGames = function(runtime) {
             this.GPGInterface.login(function(loggedIn, error) {
                 if (loggedIn) {
                     self.runtime.trigger(cr.plugins_.ATPGooglePlayGames.prototype.cnds.onGPGLoginSuccess, self);
+                    
+                    var user_information = this.GPGInterface.getLoggedInUser();
+
+                    user_id = user_information.userID;
+                    user_name = user_information.userName;
+
                 } else {
                     console.log(JSON.stringify(error));
                     self.runtime.trigger(cr.plugins_.ATPGooglePlayGames.prototype.cnds.onGPGLoginFail, self);
@@ -265,6 +281,35 @@ cr.plugins_.ATPGooglePlayGames = function(runtime) {
         });
     };
 
+    Acts.prototype.GPGRequestUserImage = function(size) {
+
+        var imageSize; 
+
+        switch (layout) {
+                case 0:     imageSize = "thumb"; break;
+                case 1:     imageSize = "small"; break;
+                case 2:     imageSize = "medium"; break;
+                case 3:     imageSize = "large"; break;
+        }
+
+        if (!this.GPGInterface) return;
+        if (!this.GPGInterface.isLoggedIn()) return;
+        this.GPGInterface.requestUserImage(function(imageURL, error){
+            if (error) {
+                try {
+                    console.log(JSON.stringify(error));
+                } catch (e) {
+                    console.log(error);
+                }
+                self.runtime.trigger(cr.plugins_.ATPGooglePlayGames.prototype.cnds.onGPGRequestUserImageFail, self);
+            } else {
+                user_image = imageURL;
+                self.runtime.trigger(cr.plugins_.ATPGooglePlayGames.prototype.cnds.onGPGRequestUserImageComplete, self);
+            }
+  
+        }, user_id, imageSize);
+    };
+
     pluginProto.acts = new Acts();
 
     /**
@@ -274,6 +319,18 @@ cr.plugins_.ATPGooglePlayGames = function(runtime) {
 
     Exps.prototype.PlayerScore = function(ret) {
         ret.set_float(requested_score);
+    };
+    
+    Exps.prototype.UserID = function(ret) {
+        ret.set_string(user_id);
+    };
+
+    Exps.prototype.UserName = function(ret) {
+        ret.set_string(user_name);
+    };
+
+    Exps.prototype.UserImage = function(ret) {
+        ret.set_string(user_image);
     };
 
     pluginProto.exps = new Exps();
