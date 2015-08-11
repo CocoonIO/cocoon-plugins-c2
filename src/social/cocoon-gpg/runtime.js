@@ -145,16 +145,16 @@ cr.plugins_.ATPGooglePlayGames = function(runtime) {
     Acts.prototype.GPGRequestLogin = function() {
         if (!this.GPGInterface) return;
         if (this.GPGInterface.isLoggedIn()) {
+            var user_information = this.GPGInterface.getLoggedInUser();
+            user_id = user_information.userID;
+            user_name = user_information.userName;
             self.runtime.trigger(cr.plugins_.ATPGooglePlayGames.prototype.cnds.onGPGLoginSuccess, self);
+
         } else {
             this.GPGInterface.login(function(loggedIn, error) {
                 if (loggedIn) {
                     self.runtime.trigger(cr.plugins_.ATPGooglePlayGames.prototype.cnds.onGPGLoginSuccess, self);
-                    
-                    var user_information = this.GPGInterface.getLoggedInUser();
-
-                    user_id = user_information.userID;
-                    user_name = user_information.userName;
+                    // Cannot call getLoggedInUser here because the information is not yet available.
 
                 } else {
                     console.log(JSON.stringify(error));
@@ -294,6 +294,11 @@ cr.plugins_.ATPGooglePlayGames = function(runtime) {
 
         if (!this.GPGInterface) return;
         if (!this.GPGInterface.isLoggedIn()) return;
+
+        var user_information = this.GPGInterface.getLoggedInUser();
+        user_id = user_information.userID;
+        user_name = user_information.userName;
+
         this.GPGInterface.requestUserImage(function(imageURL, error){
             if (error) {
                 try {
@@ -322,10 +327,14 @@ cr.plugins_.ATPGooglePlayGames = function(runtime) {
     };
     
     Exps.prototype.UserID = function(ret) {
+        var user_information = this.GPGInterface.getLoggedInUser();
+        user_id = user_information.userID;
         ret.set_string(user_id);
     };
 
     Exps.prototype.UserName = function(ret) {
+        var user_information = this.GPGInterface.getLoggedInUser();
+        user_name = user_information.userName;
         ret.set_string(user_name);
     };
 
