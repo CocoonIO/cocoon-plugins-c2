@@ -285,7 +285,7 @@ cr.plugins_.ATPGooglePlayGames = function(runtime) {
 
         var imageSize; 
 
-        switch (layout) {
+        switch (size) {
                 case 0:     imageSize = "thumb"; break;
                 case 1:     imageSize = "small"; break;
                 case 2:     imageSize = "medium"; break;
