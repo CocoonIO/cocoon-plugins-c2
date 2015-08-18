@@ -91,7 +91,7 @@ AddComboParamOption("SMALL");
 AddComboParamOption("MEDIUM");
 AddComboParamOption("LARGE");
 AddComboParam("Image size", "The size of the image to request.");
-AddAction(8, af_none, "Request image", "User data", "Request image", "Request the user image", "GPGRequestUserImage");
+AddAction(9, af_none, "Request image", "User data", "Request image", "Request the user image", "GPGRequestUserImage");
 
 /**
  * Expressions
