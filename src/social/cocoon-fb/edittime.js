@@ -94,7 +94,7 @@ AddAction(8, af_none, "Submit achievement", "Achievements", "Submit Facebook ach
  * Expressions
  */
 
-AddExpression(8, ef_return_string, "", "Leaderboards", "PlayerScore", "Returns the current player score.");
+AddExpression(0, ef_return_string, "", "Leaderboards", "PlayerScore", "Returns the current player score.");
 
 ACESDone();
 

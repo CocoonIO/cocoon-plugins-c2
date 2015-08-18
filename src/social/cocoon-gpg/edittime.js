@@ -100,11 +100,11 @@ AddAction(9, af_none, "Request image", "User data", "Request image", "Request th
 AddExpression(0, ef_return_string, "", "Leaderboards", "PlayerScore", "Returns the current player score.");
 
 // User data
-AddExpression(0, ef_return_string, "", "User data", "UserID", "Returns the current user id.");
+AddExpression(1, ef_return_string, "", "User data", "UserID", "Returns the current user id.");
 
-AddExpression(0, ef_return_string, "", "User data", "UserName", "Returns the current user name.");
+AddExpression(2, ef_return_string, "", "User data", "UserName", "Returns the current user name.");
 
-AddExpression(0, ef_return_string, "", "User data", "UsarImage", "Returns the current user image. It is necessary to request it first.");
+AddExpression(3, ef_return_string, "", "User data", "UserImage", "Returns the current user image. It is necessary to request it first.");
 
 
 ACESDone();
