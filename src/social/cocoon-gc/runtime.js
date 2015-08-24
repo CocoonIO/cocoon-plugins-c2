@@ -62,10 +62,10 @@ cr.plugins_.ATPGameCenter = function(runtime) {
     /**
      * Conditions
      */
-    Cnds.prototype.onGCGCGCLoginSuccess = function() {
+    Cnds.prototype.onGCLoginSuccess = function() {
         return true;
     };
-    Cnds.prototype.onGCGCLoginFail = function() {
+    Cnds.prototype.onGCLoginFail = function() {
         return true;
     };
     Cnds.prototype.onGCLogoutSuccess = function() {
