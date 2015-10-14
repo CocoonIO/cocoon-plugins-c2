@@ -56,7 +56,7 @@ AddCondition(17, cf_trigger, "On request user image success", "User data", "On r
 
 AddCondition(18, cf_trigger, "On request user image fail", "User data", "On request user image failed", "Triggered if something fails when trying to request the image", "onGPGRequestUserImageFail");
 
-AddCondition(19, cf_trigger, "Is Logged In", "Social", "Is Logged In", "Checks if the user is already logged in in.", "isLoggedIn");
+AddCondition(19, cf_none, "Is Logged In", "Social", "Is Logged In", "Checks if the user is already logged in in.", "isLoggedIn");
 
 /**
  * Actions
