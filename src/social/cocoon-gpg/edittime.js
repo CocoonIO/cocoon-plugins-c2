@@ -16,7 +16,7 @@ function GetPluginSettings() {
 /**
  * Conditions
  */
- 
+
 AddCondition(0, cf_trigger, "On login success", "Social", "On login success", "Triggered when the user has logged into the social service.", "onGPGLoginSuccess");
 
 AddCondition(1, cf_trigger, "On login fail", "Social", "On login failed", "Triggered if the login of the social service has failed.", "onGPGLoginFail");
@@ -55,6 +55,8 @@ AddCondition(16, cf_trigger, "On submit achievement fail", "Achievements", "On s
 AddCondition(17, cf_trigger, "On request user image success", "User data", "On request user image success", "Triggered when the image request has completed correctly.", "onGPGRequestUserImageComplete");
 
 AddCondition(18, cf_trigger, "On request user image fail", "User data", "On request user image failed", "Triggered if something fails when trying to request the image", "onGPGRequestUserImageFail");
+
+AddCondition(19, cf_trigger, "Is Logged In", "Social", "Is Logged In", "Checks if the user is already logged in in.", "isLoggedIn");
 
 /**
  * Actions

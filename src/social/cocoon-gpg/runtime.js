@@ -69,6 +69,9 @@ cr.plugins_.ATPGooglePlayGames = function(runtime) {
     /**
      * Conditions
      */
+    Cnds.prototype.isLoggedIn = function() {
+        return this.GPGInterface.isLoggedIn();
+    };
     Cnds.prototype.onGPGLoginSuccess = function() {
         return true;
     };
