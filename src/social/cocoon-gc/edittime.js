@@ -51,6 +51,8 @@ AddCondition(15, cf_trigger, "On submit achievement success", "Achievements", "O
 
 AddCondition(16, cf_trigger, "On submit achievement fail", "Achievements", "On submit achievement failed", "Triggered if something fails when trying to submit an achievement", "onGCSubmitAchievementFail");
 
+AddCondition(17, cf_none, "Is Logged In", "Social", "Is Logged In", "Checks if the user is already logged in in.", "isLoggedIn");
+
 /**
  * Actions
  */

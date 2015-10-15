@@ -62,6 +62,9 @@ cr.plugins_.ATPGameCenter = function(runtime) {
     /**
      * Conditions
      */
+    Cnds.prototype.isLoggedIn = function() {
+        return this.GCInterface.isLoggedIn();
+    };
     Cnds.prototype.onGCLoginSuccess = function() {
         return true;
     };
