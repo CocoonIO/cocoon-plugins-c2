@@ -35,7 +35,7 @@ cr.plugins_.ATPGooglePlayGames = function(runtime) {
 
     instanceProto.onCreate = function() {
 
-        if (!(this.runtime.isAndroid || this.runtime.isiOS))
+        if (!this.runtime.isAndroid)
             return;
         if (typeof Cocoon == 'undefined')
             return;
@@ -47,14 +47,12 @@ cr.plugins_.ATPGooglePlayGames = function(runtime) {
         self = this;
 
         this.startGooglePlay = function() {
-            this.GPG = Cocoon.Social.GooglePlayGames;
+            this.GPG = window.Cocoon && window.Cocoon.Social ? Cocoon.Social.GooglePlayGames : null;
             if (this.GPG) {
                 var config = {};
                 //if (this.GPGClientID) config.clientId = this.GPGClientID;
                 this.GPG.init(config);
-                if (!!this.GPG.nativeAvailable) {
-                    this.GPGInterface = this.GPG.getSocialInterface();
-                }
+                this.GPGInterface = this.GPG.getSocialInterface();
             } else {
                 throw new Error("Cannot find Google Play Games service, are you using the latest ATP for Google Play Games?");
             }
@@ -70,7 +68,7 @@ cr.plugins_.ATPGooglePlayGames = function(runtime) {
      * Conditions
      */
     Cnds.prototype.isLoggedIn = function() {
-        return this.GPGInterface.isLoggedIn();
+        return this.GPGInterface ? this.GPGInterface.isLoggedIn() : false;
     };
     Cnds.prototype.onGPGLoginSuccess = function() {
         return true;

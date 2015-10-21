@@ -30,7 +30,7 @@ cr.plugins_.ATPGameCenter = function(runtime) {
 
     instanceProto.onCreate = function() {
 
-        if (!(this.runtime.isAndroid || this.runtime.isiOS))
+        if (!this.runtime.isiOS)
             return;
         if (typeof Cocoon == 'undefined')
             return;
@@ -42,12 +42,11 @@ cr.plugins_.ATPGameCenter = function(runtime) {
         self = this;
 
         this.startGameCenter = function() {
-            this.GC = Cocoon.Social.GameCenter;
+            this.GC = window.Cocoon && window.Cocoon.Social ? Cocoon.Social.GameCenter : null;
             if (this.GC) {
                 var config = {};
-                if (!!this.GC.nativeAvailable) {
-                    this.GCInterface = this.GC.getSocialInterface();
-                }
+                this.GCInterface = this.GC.getSocialInterface();
+                
             } else {
                 throw new Error("Cannot find Game Center service, are you using the latest ATP for Game Center?");
             }
@@ -63,7 +62,7 @@ cr.plugins_.ATPGameCenter = function(runtime) {
      * Conditions
      */
     Cnds.prototype.isLoggedIn = function() {
-        return this.GCInterface.isLoggedIn();
+        return this.GCInterface ? this.GCInterface.isLoggedIn() : false;
     };
     Cnds.prototype.onGCLoginSuccess = function() {
         return true;

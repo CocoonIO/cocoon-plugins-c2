@@ -56,6 +56,9 @@ cr.plugins_.ATPShare = function(runtime) {
 
     // banner actions
     Acts.prototype.Share = function(text, img) {
+        if (!window.Cocoon || !window.Cocoon.Share) {
+            return;
+        }
         Cocoon.Share.share({
             message: text,
             image: img

@@ -39,7 +39,7 @@ cr.plugins_.ATPInApps = function(runtime) {
             
             if (!(this.runtime.isAndroid || this.runtime.isiOS))
                 return;
-            if (typeof Cocoon == 'undefined')
+            if (!window.Cocoon)
                 return;  
 
             this.storeService = Cocoon.InApp;
