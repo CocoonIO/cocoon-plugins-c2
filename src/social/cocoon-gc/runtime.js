@@ -216,7 +216,7 @@ cr.plugins_.ATPGameCenter = function(runtime) {
     Acts.prototype.GCOpenAchievements = function() {
         if (!this.GCInterface) return;
         if (!this.GCInterface.isLoggedIn()) return;
-        self.runtime.trigger(cr.plugins_.CJSAds.prototype.cnds.onGCOpenAchievementsSuccess, self);
+        self.runtime.trigger(cr.plugins_.ATPGameCenter.prototype.cnds.onGCOpenAchievementsSuccess, self);
         this.GCInterface.showAchievements(function(err) {
             if (err) {
                 console.log(JSON.stringify(error));

@@ -239,7 +239,7 @@ cr.plugins_.ATPFacebook = function(runtime) {
     Acts.prototype.facebookOpenAchievements = function() {
         if (!this.facebookServiceInterface) return;
         if (!this.facebookServiceInterface.isLoggedIn()) return;
-        self.runtime.trigger(cr.plugins_.CJSAds.prototype.cnds.onFacebookOpenAchievementsSuccess, self);
+        self.runtime.trigger(cr.plugins_.ATPFacebook.prototype.cnds.onFacebookOpenAchievementsSuccess, self);
         this.facebookServiceInterface.showAchievements(function(err) {
             if (err) {
                 console.log(JSON.stringify(error));
