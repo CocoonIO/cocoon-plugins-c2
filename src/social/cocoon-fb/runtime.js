@@ -68,6 +68,10 @@ cr.plugins_.ATPFacebook = function(runtime) {
     /**
      * Conditions
      */
+    Cnds.prototype.isLoggedIn = function() {
+        return this.facebookServiceInterface ? this.facebookServiceInterface.isLoggedIn() : false;
+    };
+
     Cnds.prototype.onFacebookLoginSuccess = function() {
         return true;
     };

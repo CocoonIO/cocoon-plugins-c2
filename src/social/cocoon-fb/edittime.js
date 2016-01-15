@@ -56,6 +56,8 @@ AddCondition(16, cf_trigger, "On submit achievement success", "Achievements", "O
 
 AddCondition(17, cf_trigger, "On submit achievement fail", "Achievements", "On submit achievement failed", "Triggered if something fails when trying to submit an achievement", "onFacebookSubmitAchievementFail");
 
+AddCondition(18, cf_trigger, "Is user the logged in", "Social", "Is the user logged in", "Returns true if the user is loggedin in the Facebook service, false otherwise", "isLoggedIn");
+
 /**
  * Actions
  */
