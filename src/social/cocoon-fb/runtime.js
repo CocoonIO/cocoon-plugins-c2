@@ -51,7 +51,7 @@ cr.plugins_.ATPFacebook = function(runtime) {
                     config.channelUrl = this.facebookChannel;
                 }
                 this.facebookService.init(config);
-                if (!!this.facebookService.nativeAvailable) {
+                if (!!this.facebookService.native) {
                     this.facebookServiceInterface = this.facebookService.getSocialInterface();
                     this.facebookServiceInterface.setTemplates("leaderboards.html", "achievements.html");
                 }
@@ -150,7 +150,7 @@ cr.plugins_.ATPFacebook = function(runtime) {
         if (this.facebookServiceInterface.isLoggedIn()) {
             self.runtime.trigger(cr.plugins_.ATPFacebook.prototype.cnds.onFacebookLoginSuccess, self);
         } else {
-            this.socialServiceInterface.login(function(loggedIn, error) {
+            this.facebookServiceInterface.login(function(loggedIn, error) {
                 if (loggedIn) {
                     self.runtime.trigger(cr.plugins_.ATPFacebook.prototype.cnds.onFacebookLoginSuccess, self);
                 } else {
