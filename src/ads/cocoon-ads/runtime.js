@@ -187,8 +187,10 @@ cr.plugins_.ATPAds = function(runtime) {
                 this.banner.show();
             }    
             else 
+            {
                 this.bannerReady = false;
                 this.banner.load();
+            }
         };
         Acts.prototype.HideBanner = function() {
             if(showBanner){
