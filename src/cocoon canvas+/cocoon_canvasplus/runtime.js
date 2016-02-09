@@ -60,7 +60,13 @@ cr.plugins_.Cocoon_Canvasplus = function(runtime) {
     Cnds.prototype.onConfirmCancel = function() {
         return true;
     };
+    Cnds.prototype.onCaptureScreenAsyncFail = function() {
+        return true;
+    };
     Cnds.prototype.onConfirmSuccess = function() {
+        return true;
+    };
+    Cnds.prototype.onCaptureScreenAsyncSuccess = function() {
         return true;
     };
 
