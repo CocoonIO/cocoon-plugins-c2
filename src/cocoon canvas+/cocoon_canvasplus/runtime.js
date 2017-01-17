@@ -41,6 +41,15 @@ cr.plugins_.Cocoon_Canvasplus = function(runtime) {
             return;
 
         self = this;
+        
+        document.addEventListener("deviceready", function() {
+            var devicereadyid = setInterval(function() {
+                if (self.runtime.running_layout) {
+                    self.runtime.trigger(cr.plugins_.Cocoon_Canvasplus.prototype.cnds.onDeviceReady, self);
+                    clearInterval(devicereadyid);
+                }
+            }, 100);
+        }, false);        
     };
 
     function Cnds() {};
@@ -69,7 +78,10 @@ cr.plugins_.Cocoon_Canvasplus = function(runtime) {
     Cnds.prototype.onCaptureScreenAsyncSuccess = function() {
         return true;
     };
-
+	Cnds.prototype.onDeviceReady = function () {
+		return true;
+	};
+    
     pluginProto.cnds = new Cnds();
 
     /**
