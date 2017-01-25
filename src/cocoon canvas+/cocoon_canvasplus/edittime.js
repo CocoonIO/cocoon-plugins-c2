@@ -39,6 +39,8 @@ AddCondition(8, cf_trigger, "On capture screen sync and share success", "Share",
 
 AddCondition(9, cf_trigger, "On webdialog close", "Webdialog", "On webdialog close", "Triggered if the user closes a webdialog", "onWebdialogUserClose");
 
+AddCondition(10, cf_trigger, "On device ready", "Device", "On device ready", "Triggered when device is ready", "onDeviceReady");
+
 /**
  * Actions
  */
