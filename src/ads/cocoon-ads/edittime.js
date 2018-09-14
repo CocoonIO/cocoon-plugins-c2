@@ -86,14 +86,21 @@ ACESDone();
 
 var property_list = [
     new cr.Property(ept_section, "Android", "", "Ad unit IDs for Android."),
-    new cr.Property(ept_text,   "Banner ID (Android)",  "", "Ad unit ID from admob or mopub for the banner ad."),
-    new cr.Property(ept_combo,  "Banner size (Android)",    "SMART",    "The size of the banner ad to display", "SMART|BANNER|MEDIUM_RECT|LEADERBOARD"),
-    new cr.Property(ept_text,   "Interstitial ID (Android)", "",        "Ad unit ID from admob or mopub for the interstitials."),
-    
+
+    new cr.Property(ept_text, "App ID (Android)", "", "Application ID from admob or mopub for the banner ad."),
+    new cr.Property(ept_text, "Banner ID (Android)", "", "Ad unit ID from admob or mopub for the banner ad."),
+    new cr.Property(ept_combo, "Banner size (Android)", "SMART", "The size of the banner ad to display", "SMART|BANNER|MEDIUM_RECT|LEADERBOARD"),
+    new cr.Property(ept_text, "Interstitial ID (Android)", "", "Ad unit ID from admob or mopub for the interstitials."),
+    new cr.Property(ept_text, "Rewarded Video ID (Android)", "", "Ad unit ID from admob or mopub for the rewarded videos."),
+    new cr.Property(ept_text, "Personalized Ads consent (Android)", "false", "Wether or not the user has given consent to show personalized Ads", "true|false"),
+
     new cr.Property(ept_section, "iOS", "", "Ad unit IDs for iOS."),
-    new cr.Property(ept_text,   "Banner ID (iOS)",  "", "Ad unit ID admob or mopub for the banner ad."),
-    new cr.Property(ept_combo,  "Banner size (iOS)",    "SMART",    "The size of the banner ad to display", "SMART|BANNER|MEDIUM_RECT|LEADERBOARD"),
-    new cr.Property(ept_text,   "Interstitial ID (iOS)",    "", "Ad unit ID admob or mopub for the interstitials.")
+    new cr.Property(ept_text, "App ID (iOS)", "", "Application ID from admob or mopub for the banner ad."),
+    new cr.Property(ept_text, "Banner ID (iOS)", "", "Ad unit ID admob or mopub for the banner ad."),
+    new cr.Property(ept_combo, "Banner size (iOS)", "SMART", "The size of the banner ad to display", "SMART|BANNER|MEDIUM_RECT|LEADERBOARD"),
+    new cr.Property(ept_text, "Interstitial ID (iOS)", "", "Ad unit ID admob or mopub for the interstitials."),
+    new cr.Property(ept_text, "Rewarded Video ID (iOS)", "", "Ad unit ID from admob or mopub for the rewarded videos."),
+    new cr.Property(ept_text, "Personalized Ads consent (iOS)", "false", "Wether or not the user has given consent to show personalized Ads", "true|false"),
 ];
 
 // Called by IDE when a new object type is to be created
@@ -107,7 +114,7 @@ function IDEObjectType() {
 }
 
 // Called by IDE when a new object instance of this type is to be created
-IDEObjectType.prototype.CreateInstance = function(instance) {
+IDEObjectType.prototype.CreateInstance = function (instance) {
     return new IDEInstance(instance, this);
 }
 
@@ -127,15 +134,15 @@ function IDEInstance(instance, type) {
 }
 
 // Called by the IDE after all initialization on this instance has been completed
-IDEInstance.prototype.OnCreate = function() {}
+IDEInstance.prototype.OnCreate = function () { }
 
 // Called by the IDE after a property has been changed
-IDEInstance.prototype.OnPropertyChanged = function(property_name) {}
+IDEInstance.prototype.OnPropertyChanged = function (property_name) { }
 
 // Called by the IDE to draw this instance in the editor
-IDEInstance.prototype.Draw = function(renderer) {}
+IDEInstance.prototype.Draw = function (renderer) { }
 
 // Called by the IDE when the renderer has been released (ie. editor closed)
 // All handles to renderer-created resources (fonts, textures etc) must be dropped.
 // Don't worry about releasing them - the renderer will free them - just null out references.
-IDEInstance.prototype.OnRendererReleased = function() {}
+IDEInstance.prototype.OnRendererReleased = function () { }
