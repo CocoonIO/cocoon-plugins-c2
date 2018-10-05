@@ -92,7 +92,7 @@ var property_list = [
     new cr.Property(ept_combo, "Banner size (Android)", "SMART", "The size of the banner ad to display", "SMART|BANNER|MEDIUM_RECT|LEADERBOARD"),
     new cr.Property(ept_text, "Interstitial ID (Android)", "", "Ad unit ID from admob or mopub for the interstitials."),
     new cr.Property(ept_text, "Rewarded Video ID (Android)", "", "Ad unit ID from admob or mopub for the rewarded videos."),
-    new cr.Property(ept_text, "Personalized Ads consent (Android)", "false", "Wether or not the user has given consent to show personalized Ads", "true|false"),
+    new cr.Property(ept_combo, "Personalized Ads consent (Android)", "false", "Wether or not the user has given consent to show personalized Ads", "true|false"),
 
     new cr.Property(ept_section, "iOS", "", "Ad unit IDs for iOS."),
     new cr.Property(ept_text, "App ID (iOS)", "", "Application ID from admob or mopub for the banner ad."),
@@ -100,7 +100,7 @@ var property_list = [
     new cr.Property(ept_combo, "Banner size (iOS)", "SMART", "The size of the banner ad to display", "SMART|BANNER|MEDIUM_RECT|LEADERBOARD"),
     new cr.Property(ept_text, "Interstitial ID (iOS)", "", "Ad unit ID admob or mopub for the interstitials."),
     new cr.Property(ept_text, "Rewarded Video ID (iOS)", "", "Ad unit ID from admob or mopub for the rewarded videos."),
-    new cr.Property(ept_text, "Personalized Ads consent (iOS)", "false", "Wether or not the user has given consent to show personalized Ads", "true|false"),
+    new cr.Property(ept_combo, "Personalized Ads consent (iOS)", "false", "Wether or not the user has given consent to show personalized Ads", "true|false"),
 ];
 
 // Called by IDE when a new object type is to be created
