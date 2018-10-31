@@ -43,6 +43,19 @@ AddCondition(10, cf_trigger, "On interstitial dismissed", "Interstitials", "On i
 
 AddCondition(11, cf_none, "Is showing interstitial", "Interstitials", "Is showing interstitial", "True if currently showing a interstitial.", "isShowingInterstitial");
 
+// Rewarded
+AddCondition(12, cf_trigger, "On rewarded shown", "Rewarded", "On rewarded shown", "Triggered when an rewarded is shown.", "onRewardedShown");
+
+AddCondition(13, cf_trigger, "On rewarded reward", "Rewarded", "On rewarded reward", "Triggered when an rewarded is rewarding.", "onReward");
+
+AddCondition(14, cf_trigger, "On rewarded loaded", "Rewarded", "On rewarded loaded", "Triggered when an new rewarded ad is cached.", "onRewardedLoaded");
+
+AddCondition(15, cf_trigger, "On rewarded failed", "Rewarded", "On rewarded failed", "Triggered when an rewarded fails to load.", "onRewardedFailed");
+
+AddCondition(16, cf_trigger, "On rewarded dismissed", "Rewarded", "On rewarded dismissed", "Triggered when an new rewarded is dismissed.", "onRewardedDismissed");
+
+AddCondition(17, cf_none, "Is showing rewarded", "Rewarded", "Is showing rewarded", "True if currently showing a rewarded.", "isShowingRewarded");
+
 /**
  * Actions
  */
@@ -75,8 +88,16 @@ AddAction(8, af_none, "Load banner", "Banners", "Load a banner ad", "Start loadi
 // Show
 AddAction(12, af_none, "Show interstitial", "Interstitials", "Show the interstitial", "Show an interstitial on the screen while the game is running.", "ShowInterstitial");
 
-// Load 
+// Load
 AddAction(13, af_none, "Load interstitial", "Interstitials", "Load an interstitial", "Start loading an interstitial in the background.", "LoadInterstitial");
+
+// Rewarded
+
+// Show
+AddAction(14, af_none, "Show rewarded", "Rewarded", "Show the rewarded", "Show a rewarded video on the screen while the game is running.", "ShowRewarded");
+
+// Load
+AddAction(15, af_none, "Load rewarded", "Rewarded", "Load a rewarded", "Start loading a rewarded video in the background.", "LoadRewarded");
 
 ACESDone();
 
